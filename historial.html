@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial Clínico - InclúYes</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/historial_styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+   <div id="navbar-container"></div>
+
+    <!-- Main Container -->
+    <div class="medical-system-container">
+        <!-- Patient List Screen -->
+        <div id="patient-list-screen" class="screen active">
+            <div class="welcome-header">
+                <h1>Bienvenido al Sistema de Historial Clínico</h1>
+                <p>Gestiona los registros de tus pacientes y las visitas.</p>
+            </div>
+
+            <div class="historial-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-file-medical"></i>
+                    </div>
+                    <h2>Historial Clínico</h2>
+                </div>
+
+                <div class="search-container">
+                    <input type="text" id="patient-search" placeholder="Buscar por nombre, CURP o número de derechohabiente..." class="search-input">
+                    <button class="search-btn">Buscar</button>
+                </div>
+
+                <div class="patients-table">
+                    <div class="table-header">
+                        <div class="header-cell">Paciente</div>
+                        <div class="header-cell">CURP</div>
+                        <div class="header-cell">No. Seguro</div>
+                        <div class="header-cell">Acciones</div>
+                    </div>
+                    
+                    <div class="table-body" id="patients-table-body">
+                        <div class="table-row" data-patient-id="1">
+                            <div class="cell">María González López</div>
+                            <div class="cell">GOML850315MDFNZR03</div>
+                            <div class="cell">12345678901</div>
+                            <div class="cell">
+                                <button class="action-btn" onclick="viewPatient(1)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="table-row" data-patient-id="2">
+                            <div class="cell">Juan Carlos Pérez</div>
+                            <div class="cell">PECJ900512HDFRRL05</div>
+                            <div class="cell">98765432109</div>
+                            <div class="cell">
+                                <button class="action-btn" onclick="viewPatient(2)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="table-row" data-patient-id="3">
+                            <div class="cell">Ana Sofía Martínez</div>
+                            <div class="cell">MASA950728MDFRTL08</div>
+                            <div class="cell">55667788990</div>
+                            <div class="cell">
+                                <button class="action-btn" onclick="viewPatient(3)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Patient Detail Screen -->
+        <div id="patient-detail-screen" class="screen">
+            <div class="patient-detail-container">
+                <!-- Patient Info Header -->
+                <div class="patient-info-card">
+                    <div class="patient-name" id="patient-name">(Nombre de paciente)</div>
+                    <div class="patient-details">
+                        <span id="patient-age">(Edad)</span>
+                        <span id="patient-gender">(Sexo)</span>
+                        <span id="patient-curp">(Curp)</span>
+                        <span id="patient-nss">(NSS)</span>
+                    </div>
+                </div>
+
+                <!-- Tabs Navigation -->
+                <div class="tabs-container">
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" onclick="showTab('consultas')">Consultas</button>
+                        <button class="tab-btn" onclick="showTab('antecedentes')">Antecedentes</button>
+                        <button class="tab-btn" onclick="showTab('recetas')">Recetas</button>
+                    </div>
+
+                    <!-- Consultas Tab -->
+                    <div id="consultas-tab" class="tab-content active">
+                        <div class="entries-counter" id="consultations-counter">
+                            0 consultas registradas
+                        </div>
+                        
+                        <div class="quick-actions">
+                            <button class="quick-action-btn" onclick="showQuickConsultation()">
+                                <i class="fas fa-plus"></i> Consulta Rápida
+                            </button>
+                            <button class="quick-action-btn" onclick="duplicateLastConsultation()">
+                                <i class="fas fa-copy"></i> Duplicar Última
+                            </button>
+                            <button class="quick-action-btn" onclick="showNewConsultationForm()">
+                                <i class="fas fa-edit"></i> Consulta Completa
+                            </button>
+                        </div>
+                        
+                        <div class="consultation-headers">
+                            <span>Fecha de consulta</span>
+                            <span>Doctor encargado</span>
+                        </div>
+                        
+                        <div class="consultations-list" id="consultations-list">
+                            <!-- Consultations will be loaded here -->
+                        </div>
+
+                        <button class="add-consultation-btn" onclick="showNewConsultationForm()">
+                            <i class="fas fa-plus"></i> Nueva Consulta
+                        </button>
+                    </div>
+
+                    <!-- Antecedentes Tab -->
+                    <div id="antecedentes-tab" class="tab-content">
+                        <div class="antecedentes-grid">
+                            <div class="antecedente-card">
+                                <div class="card-title">Alergias:</div>
+                                <div class="card-content" id="allergies-content">
+                                    <!-- Allergies will be loaded here -->
+                                </div>
+                                <button class="add-btn" onclick="showAddModal('allergies', 'Agregar Alergia')">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+
+                            <div class="antecedente-card">
+                                <div class="card-title">Enfermedades crónicas:</div>
+                                <div class="card-content" id="chronic-diseases-content">
+                                    <!-- Chronic diseases will be loaded here -->
+                                </div>
+                                <button class="add-btn" onclick="showAddModal('chronic-diseases', 'Agregar Enfermedad Crónica')">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+
+                            <div class="antecedente-card">
+                                <div class="card-title">Medicación habitual:</div>
+                                <div class="card-content" id="medications-content">
+                                    <!-- Medications will be loaded here -->
+                                </div>
+                                <button class="add-btn" onclick="showAddModal('medications', 'Agregar Medicación')">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+
+                            <div class="antecedente-card">
+                                <div class="card-title">Cirugías:</div>
+                                <div class="card-content" id="surgeries-content">
+                                    <!-- Surgeries will be loaded here -->
+                                </div>
+                                <button class="add-btn" onclick="showAddModal('surgeries', 'Agregar Cirugía')">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+
+                            <div class="antecedente-card">
+                                <div class="card-title">Vacunas:</div>
+                                <div class="card-content" id="vaccines-content">
+                                    <!-- Vaccines will be loaded here -->
+                                </div>
+                                <button class="add-btn" onclick="showAddModal('vaccines', 'Agregar Vacuna')">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+
+                            <div class="antecedente-card">
+                                <div class="card-title">Antecedentes familiares:</div>
+                                <div class="card-content" id="family-history-content">
+                                    <!-- Family history will be loaded here -->
+                                </div>
+                                <button class="add-btn" onclick="showAddModal('family-history', 'Agregar Antecedente Familiar')">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recetas Tab -->
+                    <div id="recetas-tab" class="tab-content">
+                        <div class="entries-counter" id="prescriptions-counter">
+                            0 recetas registradas
+                        </div>
+                        
+                        <div class="quick-actions">
+                            <button class="quick-action-btn" onclick="showQuickPrescription()">
+                                <i class="fas fa-plus"></i> Receta Rápida
+                            </button>
+                            <button class="quick-action-btn" onclick="duplicateLastPrescription()">
+                                <i class="fas fa-copy"></i> Duplicar Última
+                            </button>
+                            <button class="quick-action-btn" onclick="showNewPrescriptionForm()">
+                                <i class="fas fa-edit"></i> Receta Completa
+                            </button>
+                        </div>
+                        
+                        <div class="prescription-headers">
+                            <span>Fecha de consulta</span>
+                            <span>Doctor encargado</span>
+                        </div>
+                        
+                        <div class="prescriptions-list" id="prescriptions-list">
+                            <!-- Prescriptions will be loaded here -->
+                        </div>
+
+                        <button class="add-prescription-btn" onclick="showNewPrescriptionForm()">
+                            <i class="fas fa-plus"></i> Nueva Receta
+                        </button>
+                    </div>
+                </div>
+
+                <button class="back-btn" onclick="showPatientList()">
+                    <i class="fas fa-arrow-left"></i> Volver al listado
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Consultation Modal -->
+    <div id="consultation-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Nueva Consulta</h3>
+                <button class="close-btn" onclick="closeModal('consultation-modal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="consultation-form">
+                    <div class="form-group">
+                        <label>Fecha de consulta:</label>
+                        <input type="date" id="consultation-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Doctor encargado:</label>
+                        <input type="text" id="consultation-doctor" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Motivo de Consulta:</label>
+                        <textarea id="consultation-reason" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Exploración Física:</label>
+                        <textarea id="consultation-examination" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Diagnóstico:</label>
+                        <textarea id="consultation-diagnosis" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Tratamiento:</label>
+                        <textarea id="consultation-treatment" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Estudios Solicitados:</label>
+                        <textarea id="consultation-studies" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeModal('consultation-modal')">Cancelar</button>
+                <button class="btn-save" onclick="saveConsultation()">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Prescription Modal -->
+    <div id="prescription-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Nueva Receta</h3>
+                <button class="close-btn" onclick="closeModal('prescription-modal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="prescription-form">
+                    <div class="form-group">
+                        <label>Fecha:</label>
+                        <input type="date" id="prescription-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Doctor:</label>
+                        <input type="text" id="prescription-doctor" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Paciente:</label>
+                        <input type="text" id="prescription-patient" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Medicamentos:</label>
+                        <textarea id="prescription-medications" rows="4" placeholder="Medicamento 1: Dosis, frecuencia, duración&#10;Medicamento 2: Dosis, frecuencia, duración" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Dosis:</label>
+                        <input type="text" id="prescription-dose" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Instrucciones:</label>
+                        <textarea id="prescription-instructions" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeModal('prescription-modal')">Cancelar</button>
+                <button class="btn-save" onclick="savePrescription()">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Item Modal -->
+    <div id="add-item-modal" class="modal">
+        <div class="modal-content small">
+            <div class="modal-header">
+                <h3 id="add-item-title">Agregar información</h3>
+                <button class="close-btn" onclick="closeModal('add-item-modal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label id="add-item-label">Información:</label>
+                    <textarea id="add-item-input" rows="3" placeholder="Escribir información..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeModal('add-item-modal')">Cancelar</button>
+                <button class="btn-save" onclick="addItem()">Agregar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/historial-clinico.js"></script>
+
+
+      <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-brand">
+                        <img src="img/icono sin letras.png" alt="InclúYes Logo">
+                    </div>
+                    <p class="footer-description">
+                        Eliminando barreras de comunicación en la atención médica con inteligencia artificial.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="footer-title">Modos de Uso</h3>
+                    <ul class="footer-links">
+                        <li><a href="#domiciliaria">Atención Domiciliaria</a></li>
+                        <li><a href="#consultorio">Consultorio / Hospital</a></li>
+                        <li><a href="#telemedicina">Telemedicina</a></li>
+                      
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-title">Tecnologías</h3>
+                    <ul class="footer-links">
+                        <li><a href="#lsm">Lengua de Señas Mexicana</a></li>
+                        <li><a href="#indigenas">Lenguas Nativas</a></li>
+                        <li><a href="#ia">Inteligencia Artificial</a></li>
+                        <li><a href="#accesibilidad">Accesibilidad</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-title">Contacto</h3>
+                    <div class="footer-contact">
+                        <p>📞 +52 9931922504</p>
+                        <p>✉️ incluyes2025@gmail.com</p>
+                        <p>📍 Villahermosa, Tabasco</p>
+                     
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 InclúYes. Todos los derechos reservados. | Comprometidos con la inclusión y accesibilidad.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+ <script src="js/accessibility-functions.js"></script>
+       <script src="/js/script.js"></script>
+</html>

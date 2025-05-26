@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Accesibilidad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: transparent;
+            overflow: hidden;
+        }
+
+        /* Panel de Accesibilidad */
+        .accessibility-panel {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 450px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+            transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 10001;
+            overflow-y: auto;
+            border-left: 1px solid #e5e7eb;
+        }
+
+        .accessibility-panel.open {
+            right: 0;
+        }
+
+        .panel-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 24px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .panel-header h2 {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .panel-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .panel-content {
+            padding: 24px 20px;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+
+        .control-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px solid #f3f4f6;
+            transition: background-color 0.2s ease;
+        }
+
+        .control-section:hover {
+            background-color: #f9fafb;
+            margin: 0 -20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 8px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .section-header .icon {
+            font-size: 1.3rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .section-header h3 {
+            font-size: 1rem;
+            color: #374151;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 30px 0 20px 0;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #667eea;
+            position: relative;
+        }
+
+        .section-divider::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .section-divider .icon {
+            font-size: 1.4rem;
+            color: #667eea;
+        }
+
+        .section-divider h2 {
+            font-size: 1.2rem;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 28px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #d1d5db;
+            transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 28px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        input:checked + .slider {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+
+        .slider:hover {
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        /* Slider Container */
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 140px;
+        }
+
+        .slider-container input[type="range"] {
+            flex: 1;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        .slider-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .slider-container input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        .slider-value {
+            font-size: 0.85rem;
+            color: #6b7280;
+            min-width: 35px;
+            text-align: center;
+            font-weight: 500;
+            background: #f3f4f6;
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        /* Text Size Controls */
+        .text-size-controls {
+            display: flex;
+            gap: 6px;
+        }
+
+        .size-btn {
+            width: 38px;
+            height: 38px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .size-btn[data-size="small"] { font-size: 12px; }
+        .size-btn[data-size="normal"] { font-size: 14px; }
+        .size-btn[data-size="large"] { font-size: 16px; }
+        .size-btn[data-size="xlarge"] { font-size: 18px; }
+
+        .size-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .size-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Visual Controls */
+        .visual-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .visual-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 12px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visual-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.15);
+        }
+
+        .visual-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.25);
+        }
+
+        .visual-icon {
+            font-size: 1.6rem;
+        }
+
+        /* Language Controls */
+        .language-dropdown {
+            padding: 10px 14px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            background: white;
+            font-size: 0.9rem;
+            color: #374151;
+            cursor: pointer;
+            min-width: 160px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .language-dropdown:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .language-dropdown:hover {
+            border-color: #667eea;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+        }
+
+        .language-indicator {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            color: white;
+            margin: 20px 0;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .language-flag {
+            font-size: 1.3rem;
+        }
+
+        .language-name {
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .language-status {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 10px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Reset Button */
+        .reset-section {
+            margin-top: 30px;
+            padding-top: 24px;
+            border-top: 2px solid #f3f4f6;
+        }
+
+        .reset-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reset-btn:hover {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
+        }
+
+        .reset-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Overlay */
+        .accessibility-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(2px);
+        }
+
+        .accessibility-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .accessibility-panel {
+                width: 100%;
+                right: -100%;
+            }
+
+            .visual-controls {
+                grid-template-columns: 1fr;
+            }
+
+            .text-size-controls {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Overlay -->
+    <div class="accessibility-overlay" id="accessibilityOverlay"></div>
+
+    <!-- Panel de Accesibilidad -->
+    <div class="accessibility-panel" id="accessibilityPanel">
+        <div class="panel-header">
+            <h2>🎯 Panel de Accesibilidad</h2>
+            <p>Personaliza tu experiencia de navegación</p>
+            <button class="close-btn" id="closeAccessibilityPanel">×</button>
+        </div>
+
+        <div class="panel-content">
+            <!-- Menú de gran tamaño -->
+            <div class="control-section">
+                <div class="section-header">
+                    <span class="icon">📱</span>
+                    <h3>Menú de gran tamaño</h3>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="largeMenu">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <!-- Lectura por Voz -->
+            <div class="control-section">
+                <div class="section-header">
+                    <span class="icon">🔊</span>
+                    <h3>Lectura por Voz</h3>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="voiceReading">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <!-- Leer al pasar cursor -->
+            <div class="control-section">
+                <div class="section-header">
+                    <span class="icon">👆</span>
+                    <h3>Leer al pasar cursor</h3>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="hoverReading">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <!-- Velocidad de voz -->
+            <div class="control-section">
+                <div class="section-header">
+                    <span class="icon">⚡</span>
+                    <h3>Velocidad de voz</h3>
+                </div>
+                <div class="slider-container">
+                    <input type="range" id="voiceSpeed" min="0.5" max="2" step="0.1" value="1">
+                    <span class="slider-value">1x</span>
+                </div>
+            </div>
+
+            <!-- Tono de voz -->
+            <div class="control-section">
+                <div class="section-header">
+                    <span class="icon">🎵</span>
+                    <h3>Tono de voz</h3>
+                </div>
+                <div class="slider-container">
+                    <input type="range" id="voicePitch" min="0.5" max="2" step="0.1" value="1">
+                    <span class="slider-value">1x</span>
+                </div>
+            </div>
+
+            <!-- Controles de Texto -->
+            <div class="section-divider">
+                <span class="icon">📝</span>
+                <h2>Controles de Texto</h2>
+            </div>
+
+            <!-- Tamaño de texto -->
+            <div class="control-section">
+                <div class="section-header">
+                    <span class="icon">🔤</span>
+                    <h3>Tamaño de texto</h3>
+                </div>
+                <div class="text-size-controls">
+                    <button class="size-btn" data-size="small">A</button>
+                    <button class="size-btn active" data-size="normal">A</button>
+                    <button class="size-btn" data-size="large">A</button>
+                    <button class="size-btn" data-size="xlarge">A</button>
+                </div>
+            </div>
+
+            <!-- Subrayar enlaces -->
+            <div class="control-section">
+                <div class="section-header">
+                    <span class="icon">🔗</span>
+                    <h3>Subrayar enlaces</h3>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="underlineLinks">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <!-- Espaciado de líneas -->
+            <div class="control-section">
+                <div class="section-header">
+                    <span class="icon">📏</span>
+                    <h3>Espaciado de líneas</h3>
+                </div>
+                <div class="slider-container">
+                    <input type="range" id="lineSpacing" min="1" max="3" step="0.2" value="1.4">
+                    <span class="slider-value">1.4x</span>
+                </div>
+            </div>
+
+            <!-- Espaciado de letras -->
+            <div class="control-section">
+                <div class="section-header">
+                    <span class="icon">↔️</span>
+                    <h3>Espaciado de letras</h3>
+                </div>
+                <div class="slider-container">
+                    <input type="range" id="letterSpacing" min="0" max="5" step="0.5" value="0">
+                    <span class="slider-value">0px</span>
+                </div>
+            </div>
+
+            <!-- Experiencia Visual -->
+            <div class="section-divider">
+                <span class="icon">👁️</span>
+                <h2>Experiencia Visual</h2>
+            </div>
+
+            <!-- Contraste y Modo Oscuro -->
+            <div class="visual-controls">
+                <button class="visual-btn" id="contrastBtn">
+                    <span class="visual-icon">⚫</span>
+                    <span>Contraste</span>
+                </button>
+                <button class="visual-btn" id="darkModeBtn">
+                    <span class="visual-icon">🌙</span>
+                    <span>Modo oscuro</span>
+                </button>
+                <button class="visual-btn" id="removeImagesBtn">
+                    <span class="visual-icon">🚫</span>
+                    <span>Quitar imágenes</span>
+                </button>
+                <button class="visual-btn" id="largeCursorBtn">
+                    <span class="visual-icon">👆</span>
+                    <span>Cursor grande</span>
+                </button>
+            </div>
+
+            <!-- Idiomas Indígenas -->
+            <div class="section-divider">
+                <span class="icon">🗣️</span>
+                <h2>Idiomas Indígenas</h2>
+            </div>
+
+            <div class="control-section">
+                <div class="section-header">
+                    <span class="icon">🌎</span>
+                    <h3>Seleccionar idioma</h3>
+                </div>
+                <select id="languageSelect" class="language-dropdown">
+                    <option value="es">Español</option>
+                    <option value="nah">Náhuatl</option>
+                    <option value="yua">Maya Yucateco</option>
+                    <option value="chf">Yokotán (Chontal)</option>
+                    <option value="otm">Otomí</option>
+                    <option value="zap">Zapoteco</option>
+                    <option value="mix">Mixteco</option>
+                </select>
+            </div>
+
+            <!-- Indicador de idioma activo -->
+            <div class="language-indicator">
+                <span class="language-flag">🇲🇽</span>
+                <span class="language-name" id="currentLanguageName">Español</span>
+                <span class="language-status">Idioma activo</span>
+            </div>
+
+            <!-- Resaltado de enfoque -->
+            <div class="control-section">
+                <div class="section-header">
+                    <span class="icon">🎯</span>
+                    <h3>Resaltado de enfoque</h3>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="focusHighlight">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <!-- Restablecer configuración -->
+            <div class="reset-section">
+                <button class="reset-btn" id="resetBtn">
+                    <span class="icon">🔄</span>
+                    Restablecer configuración
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class AccessibilityPanel {
+    constructor() {
+        this.settings = this.loadSettings()
+        this.speechSynthesis = window.speechSynthesis
+        this.currentUtterance = null
+        this.isReading = false
+        this.panel = null
+        this.overlay = null
+        this.parentWindow = window.parent !== window ? window.parent : window.opener || window
+
+        this.init()
+    }
+
+    init() {
+        this.panel = document.getElementById("accessibilityPanel")
+        this.overlay = document.getElementById("accessibilityOverlay")
+
+        this.bindEvents()
+        this.updateUI()
+        this.applySettingsToParent()
+        
+        console.log("✅ Panel de accesibilidad inicializado")
+        console.log("🔗 Parent window:", this.parentWindow !== window ? "Detectado" : "No detectado")
+    }
+
+    bindEvents() {
+        // Close button
+        document.getElementById("closeAccessibilityPanel").addEventListener("click", () => {
+            this.closePanel()
+        })
+
+        // Overlay click
+        this.overlay.addEventListener("click", () => {
+            this.closePanel()
+        })
+
+        // Toggle switches
+        document.getElementById("largeMenu").addEventListener("change", (e) => {
+            this.settings.largeMenu = e.target.checked
+            this.saveSettings()
+            this.applySettingsToParent()
+            console.log("📱 Menú grande:", e.target.checked)
+        })
+
+        document.getElementById("voiceReading").addEventListener("change", (e) => {
+            this.settings.voiceReading = e.target.checked
+            this.saveSettings()
+            this.applySettingsToParent()
+            console.log("🔊 Lectura por voz:", e.target.checked)
+        })
+
+        document.getElementById("hoverReading").addEventListener("change", (e) => {
+            this.settings.hoverReading = e.target.checked
+            this.saveSettings()
+            this.applySettingsToParent()
+            console.log("👆 Leer al pasar cursor:", e.target.checked)
+        })
+
+        document.getElementById("underlineLinks").addEventListener("change", (e) => {
+            this.settings.underlineLinks = e.target.checked
+            this.saveSettings()
+            this.applySettingsToParent()
+            console.log("🔗 Subrayar enlaces:", e.target.checked)
+        })
+
+        document.getElementById("focusHighlight").addEventListener("change", (e) => {
+            this.settings.focusHighlight = e.target.checked
+            this.saveSettings()
+            this.applySettingsToParent()
+            console.log("🎯 Resaltado de enfoque:", e.target.checked)
+        })
+
+        // Sliders
+        document.getElementById("voiceSpeed").addEventListener("input", (e) => {
+            this.settings.voiceSpeed = parseFloat(e.target.value)
+            this.updateSliderValue("voiceSpeed", e.target.value + "x")
+            this.saveSettings()
+            this.applySettingsToParent()
+        })
+
+        document.getElementById("voicePitch").addEventListener("input", (e) => {
+            this.settings.voicePitch = parseFloat(e.target.value)
+            this.updateSliderValue("voicePitch", e.target.value + "x")
+            this.saveSettings()
+            this.applySettingsToParent()
+        })
+
+        document.getElementById("lineSpacing").addEventListener("input", (e) => {
+            this.settings.lineSpacing = parseFloat(e.target.value)
+            this.updateSliderValue("lineSpacing", e.target.value + "x")
+            this.saveSettings()
+            this.applySettingsToParent()
+            console.log("📏 Espaciado de líneas:", e.target.value + "x")
+        })
+
+        document.getElementById("letterSpacing").addEventListener("input", (e) => {
+            this.settings.letterSpacing = parseFloat(e.target.value)
+            this.updateSliderValue("letterSpacing", e.target.value + "px")
+            this.saveSettings()
+            this.applySettingsToParent()
+            console.log("↔️ Espaciado de letras:", e.target.value + "px")
+        })
+
+        // Text size buttons
+        document.querySelectorAll(".size-btn").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                document.querySelectorAll(".size-btn").forEach((b) => b.classList.remove("active"))
+                e.target.classList.add("active")
+                this.settings.textSize = e.target.dataset.size
+                this.saveSettings()
+                this.applySettingsToParent()
+                console.log("🔤 Tamaño de texto:", e.target.dataset.size)
+            })
+        })
+
+        // Visual buttons
+        document.getElementById("contrastBtn").addEventListener("click", () => {
+            this.settings.highContrast = !this.settings.highContrast
+            this.updateVisualButton("contrastBtn", this.settings.highContrast)
+            this.saveSettings()
+            this.applySettingsToParent()
+            console.log("⚫ Alto contraste:", this.settings.highContrast)
+        })
+
+        document.getElementById("darkModeBtn").addEventListener("click", () => {
+            this.settings.darkMode = !this.settings.darkMode
+            this.updateVisualButton("darkModeBtn", this.settings.darkMode)
+            this.saveSettings()
+            this.applySettingsToParent()
+            console.log("🌙 Modo oscuro:", this.settings.darkMode)
+        })
+
+        document.getElementById("removeImagesBtn").addEventListener("click", () => {
+            this.settings.removeImages = !this.settings.removeImages
+            this.updateVisualButton("removeImagesBtn", this.settings.removeImages)
+            this.saveSettings()
+            this.applySettingsToParent()
+            console.log("🚫 Quitar imágenes:", this.settings.removeImages)
+        })
+
+        document.getElementById("largeCursorBtn").addEventListener("click", () => {
+            this.settings.largeCursor = !this.settings.largeCursor
+            this.updateVisualButton("largeCursorBtn", this.settings.largeCursor)
+            this.saveSettings()
+            this.applySettingsToParent()
+            console.log("👆 Cursor grande:", this.settings.largeCursor)
+        })
+
+        // Language selector
+        document.getElementById("languageSelect").addEventListener("change", (e) => {
+            this.settings.selectedLanguage = e.target.value
+            this.updateLanguageIndicator()
+            this.saveSettings()
+            this.applySettingsToParent()
+            console.log("🌎 Idioma:", e.target.value)
+        })
+
+        // Reset button
+        document.getElementById("resetBtn").addEventListener("click", () => {
+            this.resetSettings()
+        })
+
+        // Keyboard navigation
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                this.closePanel()
+            }
+        })
+    }
+
+    openPanel() {
+        console.log("🎯 Abriendo panel de accesibilidad")
+        this.panel.classList.add("open")
+        this.overlay.classList.add("show")
+        document.body.style.overflow = "hidden"
+    }
+
+    closePanel() {
+        console.log("🔒 Cerrando panel de accesibilidad")
+        this.panel.classList.remove("open")
+        this.overlay.classList.remove("show")
+        document.body.style.overflow = ""
+
+        // Notificar a la ventana padre que el panel se cerró
+        if (this.parentWindow && this.parentWindow !== window) {
+            try {
+                this.parentWindow.postMessage({ type: "accessibility-panel-closed" }, "*")
+            } catch (error) {
+                console.log("⚠️ Error cerrando panel:", error)
+            }
+        }
+    }
+
+    loadSettings() {
+        const defaultSettings = {
+            largeMenu: false,
+            voiceReading: false,
+            hoverReading: false,
+            voiceSpeed: 1,
+            voicePitch: 1,
+            textSize: "normal",
+            underlineLinks: false,
+            lineSpacing: 1.4,
+            letterSpacing: 0,
+            highContrast: false,
+            darkMode: false,
+            removeImages: false,
+            largeCursor: false,
+            focusHighlight: false,
+            selectedLanguage: "es",
+        }
+
+        try {
+            const saved = localStorage.getItem("accessibilitySettings")
+            return saved ? { ...defaultSettings, ...JSON.parse(saved) } : defaultSettings
+        } catch {
+            return defaultSettings
+        }
+    }
+
+    saveSettings() {
+        try {
+            localStorage.setItem("accessibilitySettings", JSON.stringify(this.settings))
+            console.log("💾 Configuraciones guardadas:", this.settings)
+        } catch (error) {
+            console.error("❌ Error guardando configuraciones:", error)
+        }
+    }
+
+    applySettingsToParent() {
+        if (this.parentWindow && this.parentWindow !== window) {
+            try {
+                console.log("📤 Enviando configuraciones a ventana padre:", this.settings)
+                this.parentWindow.postMessage(
+                    {
+                        type: "accessibility-settings-changed",
+                        settings: this.settings,
+                    },
+                    "*"
+                )
+            } catch (error) {
+                console.error("❌ Error enviando configuraciones:", error)
+            }
+        } else {
+            console.log("⚠️ No se puede comunicar con ventana padre")
+        }
+    }
+
+    updateUI() {
+        // Update toggles
+        document.getElementById("largeMenu").checked = this.settings.largeMenu
+        document.getElementById("voiceReading").checked = this.settings.voiceReading
+        document.getElementById("hoverReading").checked = this.settings.hoverReading
+        document.getElementById("underlineLinks").checked = this.settings.underlineLinks
+        document.getElementById("focusHighlight").checked = this.settings.focusHighlight
+
+        // Update sliders
+        document.getElementById("voiceSpeed").value = this.settings.voiceSpeed
+        document.getElementById("voicePitch").value = this.settings.voicePitch
+        document.getElementById("lineSpacing").value = this.settings.lineSpacing
+        document.getElementById("letterSpacing").value = this.settings.letterSpacing
+
+        this.updateSliderValue("voiceSpeed", this.settings.voiceSpeed + "x")
+        this.updateSliderValue("voicePitch", this.settings.voicePitch + "x")
+        this.updateSliderValue("lineSpacing", this.settings.lineSpacing + "x")
+        this.updateSliderValue("letterSpacing", this.settings.letterSpacing + "px")
+
+        // Update text size
+        document.querySelectorAll(".size-btn").forEach((btn) => {
+            btn.classList.toggle("active", btn.dataset.size === this.settings.textSize)
+        })
+
+        // Update visual buttons
+        this.updateVisualButton("contrastBtn", this.settings.highContrast)
+        this.updateVisualButton("darkModeBtn", this.settings.darkMode)
+        this.updateVisualButton("removeImagesBtn", this.settings.removeImages)
+        this.updateVisualButton("largeCursorBtn", this.settings.largeCursor)
+
+        // Update language selector
+        document.getElementById("languageSelect").value = this.settings.selectedLanguage
+        this.updateLanguageIndicator()
+    }
+
+    updateSliderValue(sliderId, value) {
+        const slider = document.getElementById(sliderId)
+        const valueSpan = slider.parentElement.querySelector(".slider-value")
+        if (valueSpan) {
+            valueSpan.textContent = value
+        }
+    }
+
+    updateVisualButton(buttonId, isActive) {
+        const button = document.getElementById(buttonId)
+        if (button) {
+            button.classList.toggle("active", isActive)
+        }
+    }
+
+    updateLanguageIndicator() {
+        const languages = {
+            es: "Español",
+            nah: "Náhuatl",
+            yua: "Maya Yucateco",
+            chf: "Yokotán (Chontal)",
+            otm: "Otomí",
+            zap: "Zapoteco",
+            mix: "Mixteco",
+        }
+
+        const languageName = document.getElementById("currentLanguageName")
+        if (languageName) {
+            languageName.textContent = languages[this.settings.selectedLanguage] || "Español"
+        }
+    }
+
+    resetSettings() {
+        // Reset to defaults
+        this.settings = {
+            largeMenu: false,
+            voiceReading: false,
+            hoverReading: false,
+            voiceSpeed: 1,
+            voicePitch: 1,
+            textSize: "normal",
+            underlineLinks: false,
+            lineSpacing: 1.4,
+            letterSpacing: 0,
+            highContrast: false,
+            darkMode: false,
+            removeImages: false,
+            largeCursor: false,
+            focusHighlight: false,
+            selectedLanguage: "es",
+        }
+        
+        localStorage.removeItem("accessibilitySettings")
+        this.updateUI()
+        this.applySettingsToParent()
+        
+        // Show notification
+        this.showNotification("✅ Configuración restablecida correctamente")
+        console.log("🔄 Configuración restablecida")
+    }
+
+    showNotification(message) {
+        // Create notification in parent window
+        if (this.parentWindow && this.parentWindow !== window && this.parentWindow.document) {
+            try {
+                const notification = this.parentWindow.document.createElement("div")
+                notification.textContent = message
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: #10b981;
+                    color: white;
+                    padding: 12px 20px;
+                    border-radius: 8px;
+                    z-index: 10001;
+                    font-weight: 500;
+                    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+                    animation: slideInRight 0.3s ease;
+                `
+
+                this.parentWindow.document.body.appendChild(notification)
+
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove()
+                    }
+                }, 3000)
+            } catch (error) {
+                console.log("⚠️ Error mostrando notificación:", error)
+            }
+        }
+    }
+}
+
+// Initialize accessibility panel when DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+    window.accessibilityPanel = new AccessibilityPanel()
+    console.log("✅ Accessibility panel script loaded and ready")
+})
+
+// Listen for messages from parent window
+window.addEventListener("message", (event) => {
+    console.log("📨 Mensaje recibido en iframe:", event.data)
+    
+    if (event.data.type === "open-panel") {
+        console.log("📨 Recibido comando para abrir panel")
+        if (window.accessibilityPanel) {
+            window.accessibilityPanel.openPanel()
+        }
+    }
+})
+
+// Export for external use
+window.AccessibilityPanel = AccessibilityPanel
+
+// Add CSS animation for notifications
+const style = document.createElement('style')
+style.textContent = `
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+`
+document.head.appendChild(style)
+    </script>
+</body>
+</html>

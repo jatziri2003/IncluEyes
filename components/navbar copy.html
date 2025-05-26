@@ -1,0 +1,49 @@
+
+<nav class="navbar">
+    <div class="logo">
+        <img src="img/icono sin letras.png" alt="InclúYes Logo">
+    </div>
+    
+    <!-- Mobile menu button -->
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menú móvil">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    
+    <div class="nav-links" id="navLinks">
+        <a href="/index.html">Inicio</a>
+        <a href="/registro.html">Registro</a>
+        
+        <!-- Services Dropdown -->
+        <div class="dropdown">
+            <a href="#servicios" class="dropdown-toggle" onclick="toggleDropdown(event)">
+                Servicios
+                <span class="dropdown-arrow">▼</span>
+            </a>
+            <div class="dropdown-menu">
+                <a href="interprete.html" class="dropdown-item">
+                    <span class="dropdown-icon">🤟</span>
+                    <div class="dropdown-content">
+                        <span class="dropdown-title">Intérprete LSM</span>
+                        <span class="dropdown-description">Lenguaje de Señas Mexicano</span>
+                    </div>
+                </a>
+                <a href="traductor.html" class="dropdown-item">
+                    <span class="dropdown-icon">🌐</span>
+                    <div class="dropdown-content">
+                        <span class="dropdown-title">Traductor multilingüe</span>
+                        <span class="dropdown-description">Múltiples idiomas disponibles</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <a href="historial.html">Historial Clínicos</a>
+        <a href="/citas.html">Citas</a>
+        <a href="/conocenos.html">Conócenos</a>
+        <a href="/login.html" class="btn btn-primary">Inicio de Sesión</a>
+        
+        
+    </div>
+</nav>

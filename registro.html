@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Registro</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style_form.css">
+</head>
+<body>
+ <div id="navbar-container"></div>
+
+        <div class="alineado-centro">
+            <h1 class="h1-Principal"> Registro</h1>  
+        </div>
+    </div>
+    
+    <!-- Barra de progreso-->
+    <div class="progress-container">
+        <div id="progressBar"  class="progress-bar" style="width: 14.28%;">1 de 7</div>
+    </div>
+  <!-- Id y Fecha -->
+    <div class="form_section">
+        <div class="form-step" id="step-1">
+
+            <!-- Div encabezado-->
+            <div id="contenedor_encabezado" class="contenedor_encabezado">
+                <input type="text" id="id" name="id" placeholder="ID beneficiario">
+                <!-- Primera fila form -->
+                <div class="tres-grid">
+                    <div>
+                        <label for="fecha">Fecha:</label>
+                        <input type="date" id="fecha" name="fecha">
+                    </div>
+                    <div class="alineado-centro">
+                        <h2 class="h2-verde">DERECHOHABIENTE DE LA PENSIÓN</h2>
+                        <div>
+                            <input type="radio" name="derechohabiente" value="si" id="derechohabiente-si">
+                            <label for="derechohabiente-si">Sí</label>
+                            <input type="radio" name="derechohabiente" value="no" id="derechohabiente-no">
+                            <label for="derechohabiente-no">No</label>
+                        </div>
+                    </div>
+                    <div class="alineado-izquierda">
+                        <h2 class="h2-verde"><input type="radio" name="grupo_poblacional" value="adulto_mayor"> ADULTA MAYOR</h2>
+                        <h2 class="h2-verde"><input type="radio" name="grupo_poblacional" value="discapacidad"> PERSONA CON DISCAPACIDAD</h2>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="datos-generales-wrapper">
+                <!-- Datos generales form -->
+                <div class="section-title">1. DATOS GENERALES</div>
+                    <!-- Segunda fila form -->
+                    <div class="cuatro-grid">
+                        <input type="text" name="entidad_beneficiario" placeholder="Entidad">
+                        <input type="text" name="region_beneficiario" placeholder="Región">
+                        <input type="text" name="municipio_beneficiario" placeholder="Municipio">
+                        <input type="text" name="area_beneficiario" placeholder="Área">
+                    </div>
+                    <!-- Tercera fila form -->
+                    <div class="tres-grid">
+                        <input type="text" name="nombres_beneficiario" placeholder="Nombre(s)">
+                        <input type="text" name="apellidoM_beneficiario" placeholder="Primer apellido">
+                        <input type="text" name="apellidoP_beneficiario" placeholder="Segundo apellido">
+                    </div>
+                    <!-- Cuarta fila form -->
+                    <div class="dos-grid">
+                        <input type="text" name="identificacion_beneficiario" placeholder="Número de identificación">
+                        <input type="text" name="curp_beneficiario" placeholder="CURP">
+                    </div>
+                    
+                    <!-- Quita fila form -->
+                    <div class="dos-grid-auto-resto-ns">
+                        <div>
+                            <div class="form-group2">
+                            <h5> SEXO</h5>
+                            </div>
+                            <div class="form-group2">
+                                <label><input type="radio" name="sexo_beneficiario" value="masculino"> Masculino</label>
+                                <label><input type="radio" name="sexo_beneficiario" value="femenino"> Femenino</label>
+                            </div>
+                            <div class="form-group2">
+                                <input type="number" name="edad_beneficiario" placeholder="Edad" class="input-chico">
+                            </div>
+                        </div>
+                        
+                        <div class="cuatro-grid">
+                            <div class="input-container">
+                                <label for="fecha_nacimiento_beneficiario">Fecha de nacimiento</label>
+                                <input type="date" name="fecha_nacimiento_beneficiario" id="fecha_nacimiento_beneficiario">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="estado_nacimiento_beneficiario" placeholder="Estado de nacimiento">
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="tel_casa_beneficiario" placeholder="Teléfono casa">
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="celular_beneficiario" placeholder="Celular">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sexta fila form -->
+                    <div class="tres-grid">
+                        <input type="text" name="localidad_beneficiario" placeholder="Localidad">
+                        <input type="text" name="colonia_beneficiario" placeholder="Colonia">
+                        <input type="text" name="calle_beneficiario" placeholder="Calle">
+                    </div>
+                    <!-- Septima fila form-->
+                    <div class="dos-grid-auto-resto">
+                            <div>
+                                <input type="text" name="ext_beneficiario" placeholder="#EXT" class="input-chico">
+                                <input type="text" name="int_beneficiario" placeholder="#INT" class="input-chico">
+                                <input type="text" name="mz_beneficiario" placeholder="Manzana" class="input-chico">
+                                <input type="text" name="lote_beneficiario" placeholder="Lote" class="input-chico">
+                                <input type="text" name="cp_beneficiario" placeholder="C.P" class="input-chico">
+                            </div>
+                            <diV>
+                                <input type="text" name="referencia_beneficiario" placeholder="Referencia" class="input-flexible-sombreado">
+                            </diV>
+                    </div>      
+                    <div class="dos-grid">
+                        <div class="form-row-sombreado">
+                            <!-- P1 -->
+                                <h3 class="h3-negritas">1. ¿PERTENECE A UN PUEBLO INDÍGENA O AFROAMERICANO?</h3>
+                            <div>
+                                <label><input type="radio" name="pueblo" value="no"> No</label>
+                                <label><input type="radio" name="pueblo" value="si"> Sí</label>
+                            </div>
+                            <input type="text" name="pueblo_cual" placeholder="¿Cuál?" class="input-cual">
+                        </div>
+                        <!-- P2 -->
+                        <div class="form-row-sombreado">
+                                <h3 class="h3-negritas">2. ¿HABLA UN IDIOMA INDÍGENA?</h3>
+                                <div>
+                                    <label><input type="radio" name="idioma" value="no"> No</label>
+                                    <label><input type="radio" name="idioma" value="si"> Sí</label>
+                                </div>
+                                <input type="text" name="idioma_cual" placeholder="¿Cuál?" class="input-cual">
+                        </div>
+                    </div>
+                    <!-- P3 -->
+                    <div class="form-row-sombreado">
+                        <h3 class="h3-negritas">3. ¿ES BENEFICIARIO DE ALGÚN PROGRAMA DE BIENESTAR DEL GOBIERNO DE MÉXICO?</h3>
+                        <div>
+                            <label><input type="radio" name="programa" value="no"> No</label>
+                            <label><input type="radio" name="programa" value="si"> Sí</label>
+                        </div>
+                        <input type="text" name="programa_cual" placeholder="4. ¿Cuál?" class="input-cual">
+                    </div>
+            </div>
+            
+            <div class="auxiliar-wrapper">
+                <!--Segunda seccion - Auxiliar -->
+                <div class="section-title">2. AUXILIAR</div>
+                <!-- Primera fila-->
+                    <div class="cuatro-grid">
+                        <input type="text" name="entidad_auxiliar" placeholder="Entidad">
+                        <input type="text" name="region_auxiliar" placeholder="Región">
+                        <input type="text" name="municipio_auxiliar" placeholder="Municipio">
+                        <input type="text" name="area_auxiliar" placeholder="Área">
+                    </div>
+                    <!-- Segunda fia -->
+                    <div class="tres-grid">
+                        <input type="text" name="nombres_auxiliar" placeholder="Nombre(s)">
+                        <input type="text" name="apellidoM_auxiliar" placeholder="Primer apellido">
+                        <input type="text" name="apellidoP_auxiliar" placeholder="Segundo apellido">
+                    </div>
+                    <!-- Tercera fila form -->
+                    <div class="dos-grid">
+                        <input type="text" name="identificacion_auxiliar" placeholder="Número de identificación">
+                        <input type="text" name="curp_auxiliar" placeholder="CURP">
+                    </div>
+                    <!-- Cuarta fila form -->
+                    <div class="dos-grid-auto-resto-ns">
+                        <div>
+                            <div class="form-group2">
+                            <h5>SEXO</h5>
+                            </div>
+                            <div class="form-group2">
+                                <label><input type="radio" name="sexo_auxiliar" value="masculino"> Masculino</label>
+                                <label><input type="radio" name="sexo_auxiliar" value="femenino"> Femenino</label>
+                            </div>
+                            <div class="form-group2">
+                                <input type="number" name="edad_auxiliar" placeholder="Edad" class="input-chico">
+                            </div>
+                        </div>
+                        
+                        <div class="cuatro-grid">
+                            <div class="input-container">
+                                <label for="fecha_nacimiento_auxiliar">Fecha de nacimiento</label>
+                                <input type="date" name="fecha_nacimiento_auxiliar" id="fecha_nacimiento_auxiliar">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="estado_nacimiento_auxiliar" placeholder="Estado de nacimiento">
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="tel_casa_auxiliar" placeholder="Teléfono casa">
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="celular_auxiliar" placeholder="Celular">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quinta fila form -->
+                    <div class="tres-grid">
+                        <input type="text" name="localidad_auxiliar" placeholder="Localidad">
+                        <input type="text" name="colonia_auxiliar" placeholder="Colonia">
+                        <input type="text" name="calle_auxiliar" placeholder="Calle">
+                    </div>
+                    <!-- Sexta fila form-->
+                    <div class="dos-grid-auto-resto">
+                        <div>
+                            <input type="text" name="ext_auxiliar" placeholder="#EXT" class="input-chico">
+                            <input type="text" name="int_auxiliar" placeholder="#INT" class="input-chico">
+                            <input type="text" name="mz_auxiliar" placeholder="Manzana" class="input-chico">
+                            <input type="text" name="lote_auxiliar" placeholder="Lote" class="input-chico">
+                            <input type="text" name="cp_auxiliar" placeholder="C.P" class="input-chico">
+                        </div>
+                        <div>
+                            <input type="text" name="referencia_auxiliar" placeholder="Referencia" class="input-flexible-sombreado">
+                        </div>
+                    </div>
+                    <!-- Septima fila -->
+                    <div class="dos-grid">
+                        <div class="parentesco-grid-full">
+                            <h3 class="h3-rojo-m">PARENTESCO</h3>
+                            <p></p>
+                            <p></p>
+
+                            <label><input type="radio" name="parentesco" value="hija/o"> Hija (o)</label>
+                            <label><input type="radio" name="parentesco" value="nieta/o"> Nieta (o)</label>
+                            <label><input type="radio" name="parentesco" value="madre/padre"> Madre/Padre (o)</label>
+                                    
+                            <label><input type="radio" name="parentesco" value="esposa/o"> Esposa (o)</label>
+                            <label><input type="radio" name="parentesco" value="hermana/o"> Hermana/o</label>
+                            <label><input type="radio" name="parentesco" value="tia/o"> Tía (o)</label>
+                                    
+                            <label><input type="radio" name="parentesco" value="amiga/o"> Amiga/o</label>
+                            <label><input type="radio" name="parentesco" value="otro" id="radio-otro">Otro</label>
+                            <input type="text" name="parentesco_otro" id="txt-otro" class="input-otro">                                
+                        </div>
+                        <div class="parentesco-grid-full">
+                            <h3 class="h3-rojo-m">DOCUMENTOS</h3>
+                            <h3 class="h3-rojo-m">SOLICITANTE</h3>
+                            <h3 class="h3-rojo-m">AUXILIAR</h3>
+
+                            <h3 class="h3-negritas">CURP</h3>
+                            <input type="radio" name="curp_beneficiario_si" value="si">
+                            <input type="radio" name="curp_auxiliar_si" value="si">
+
+                            <h3 class="h3-negritas">IDENTIFICACION OFICIAL</h3>
+                            <input type="radio" name="ine_beneficiario_si" value="si">
+                            <input type="radio" name="ine_auxiliar_si" value="si">
+
+                            <h3 class="h3-negritas">COMPROBANTE DE DOMICILIO</h3>
+                            <input type="radio" name="comprobante_domicilio_beneficiario_si" value="si">
+                            <input type="radio" name="comprobante_domicilio_auxiliar_si" value="si">
+                        </div>                        
+                    </div>
+            </div>
+            <div class="vivienda-wrapper">
+                <div class="section-title">3. VIVIENDA</div>
+                <div class="form-row-sombreado">
+                    <div class="form-row">
+                        <h3 class="h3-negritas">5. ¿LA VIVIENDA QUE HABITA ES?</h3>
+                        <label><input type="radio" name="vivienda" value="propia"> Propia</label>
+                        <label><input type="radio" name="vivienda" value="rentada"> Rentada</label>
+                        <label><input type="radio" name="vivienda" value="prestada"> Prestada</label>
+                        <label><input type="radio" name="vivienda" value="otra"> Otra:</label>
+                        <label><input type="text" name="vivienda_otro" class="input-otro"></label>
+                    </div>
+                </div>
+                <div class="dos-grid">
+                    <div class="form-row-sombreado-full">
+                        <div class="alineado-izquierda">
+                            <h3 class="h3-negritas">6. ¿CON CUÁNTAS PERSONAS VIVE?</h3>
+                            <label><input type="radio" name="vivienda_personas" value="sola/o"> Sola (o)</label>
+                            <label><input type="radio" name="vivienda_personas" value="1"> 1</label>
+                            <label><input type="radio" name="vivienda_personas" value="2"> 2</label>
+                            <label><input type="radio" name="vivienda_personas" value="3"> 3</label>
+                            <label><input type="radio" name="vivienda_personas" value="4"> 4</label>
+                            <label><input type="radio" name="vivienda_personas" value="5"> 5</label>
+                            <label><input type="radio" name="vivienda_personas" value="+6"> 6 o más</label>
+                        </div>
+                    </div>
+
+                    <div class="form-row-sombreado-full">
+                        <div class="alineado-izquierda">
+                            <h3 class="h3-negritas">7. ANOTE EL NÚMERO DE PERSONAS CON LAS QUE VIVE</h3>
+                            <div class="tres-grid">
+                                <!-- Primera fila-->
+                                <div>
+                                    <label><input class="input-vivienda" type="number" name="vivienda_numero_personas_esposa/o" min="0" id="vivienda_numero_personas_esposa/o"> Esposa(o)</label>
+                                </div>
+                                <div>
+                                    <label><input class="input-vivienda" type="number" name="vivienda_numero_personas_hija/o" min="0"> Hija(o)</label>
+                                </div>
+                                <div>
+                                    <label><input class="input-vivienda" type="number" name="vivienda_numero_personas_nieta/o" min="0"> Nieta(o)</label>
+                                </div>
+                                <!-- Segunda fila -->
+                                <div>
+                                     <label><input class="input-vivienda" type="number" name="vivienda_numero_personas_madre/padre" min="0"> Madre/Padre</label>
+                                </div>
+                                <div>
+                                    <label><input class="input-vivienda" type="number" name="vivienda_numero_personas_hermana/o" min="0"> Hermana(o)</label>
+                                    
+                                </div>
+                                <div>
+                                    <label><input class="input-vivienda" type="number" name="vivienda_numero_personas_suegra/o" min="0"> Suegra(o)</label>
+                                </div>
+                                <!-- Tercera fila-->
+                                <div>
+                                    <label><input class="input-vivienda" type="number" name="vivienda_numero_personas_nuera/yerno" min="0"> Nuera/Yerno</label>
+                                </div>
+
+                                <div >
+                                    <label><input class="input-vivienda" type="number" name="vivienda_numero_personas_otro_cantidad" min="0"> Otro</label>
+                                    <input type="text" name="vivienda_personas_otro_nombre" placeholder="______" class="input-otro-chico">
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-step" id="step-2" style="display: none;">
+            <h2 class="alineado-centro">Sección 2</h2>
+            <div class="vivienda-wrapper">
+                <div class="section-title">3. VIVIENDA</div>
+                <h3 class="h3-rojo-m">DE QUÉ MATERIAL ES LA MAYOR PARTE DE: </h3>
+                <div class="dos-grid">
+                    <div class="dos-grid-sombreado-full">
+                        <h3 class="h3-negritas">8. MUROS</h3>
+                        <p></p>
+                        <label><input type="radio" name="vivienda_muros" value="material_de_desecho"> Material de desecho</label>
+                        <label><input type="radio" name="vivienda_muros" value="adobe"> Adobe</label>
+                        <label><input type="radio" name="vivienda_muros" value="tabique/ladrillo"> Tabique/Ladrillo</label>
+                        <label><input type="radio" name="vivienda_muros" value="madera"> Madera</label>
+                        <label><input type="radio" name="vivienda_muros" value="lamina_carton"> Lámina de cartón</label>
+                        <label><input type="radio" name="vivienda_muros" value="carrizo/bambu"> Carrizo/Bambú</label>
+                        <label><input type="radio" name="vivienda_muros" value="lamina_asbesto"> Lámina de asbesto</label>
+                        <div>
+                            <label><input type="radio" name="vivienda_muros" value="lamina_asbesto"> Otro: </label>
+                            <input type="text" name="vivienda_muros_otro" class="input-otro">
+                        </div>
+                    </div>
+
+                    <div class="dos-grid-sombreado-full">
+                        <h3 class="h3-negritas">9. TECHO </h3>
+                        <p></p>
+                        <label><input type="radio" name="vivienda_techo" value="material_de_desecho"> Material de desecho</label>
+                        <label><input type="radio" name="vivienda_techo" value="concreto"> Concreto</label>
+                        <label><input type="radio" name="vivienda_techo" value="tabique/ladrillo"> Tabique/Ladrillo</label>
+                        <label><input type="radio" name="vivienda_techo" value="lamina_metalica"> Lámina métalica</label>
+                        <label><input type="radio" name="vivienda_techo" value="madera"> Madera</label>
+                        <label><input type="radio" name="vivienda_techo" value="lamina_carton"> Lámina de cartón</label>
+                        <label><input type="radio" name="vivienda_techo" value="palma/paja"> Palma/Paja</label>
+                        <label><input type="radio" name="vivienda_techo" value="lamina_asbesto"> Lámina de asbesto</label>
+                        <div>
+                            <label><input type="radio" name="vivienda_techo" value="otro"> Otro: </label>
+                            <input type="text" name="vivienda_techo_otro" class="input-otro">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-sombreado">
+                    <div class="form-row-sombreado">
+                        <h3 class="h3-negritas">10. PISO </h3>
+                        <label><input type="radio" name="vivienda_piso" value="tierra"> Tierra</label>
+                        <label><input type="radio" name="vivienda_piso" value="cemento_o_firme"> Cemento o firme</label>
+                        <label><input type="radio" name="vivienda_piso" value="mosaico"> Mosaico</label>
+                        <label><input type="radio" name="vivienda_piso" value="madera"> Madera</label>
+                        <div>
+                            <label><input type="radio" name="vivienda_piso" value="otro"> Otro</label>
+                            <input type="text" name="vivienda_piso_otro" class="input-otro">
+                        </div>
+                    </div>
+                </div> 
+                <div class="dos-grid">
+                    <div class="un-grid-sombreado-full">
+                        <div>
+                            <h3 class="h3-negritas">11. ¿CUÁNTOS CUARTOS PARA DORMIR TIENE SU VIVIENDA?</h3>
+                            <p></p>
+                            <label><input type="radio" name="vivienda_cuartos" value="1"> 1</label>
+                            <label><input type="radio" name="vivienda_cuartos" value="2"> 2</label>
+                            <label><input type="radio" name="vivienda_cuartos" value="3"> 3</label>
+                            <label><input type="radio" name="vivienda_cuartos" value="4"> 4</label>
+                            <label><input type="radio" name="vivienda_cuartos" value="5"> 5</label>
+                            <label><input type="radio" name="vivienda_cuartos" value="+6"> 6 o más</label>
+                        </div>
+                    </div>
+                    <div class="dos-grid-sombreado-full">
+                        <h3 class="h3-negritas">12. ¿CUENTA CON SERVICIO DE?</h3>
+                        <p></p>
+                        <label><input type="radio" name="vivienda_servicios" value="agua"> Agua</label>
+                        <label><input type="radio" name="vivienda_servicios" value="drenaje"> Drenaje</label>
+                        <label><input type="radio" name="vivienda_servicios" value="electricidad"> Electricidad</label>
+                        <label><input type="radio" name="vivienda_servicios" value="servicio_sanitario"> Servicio sanitario</label>
+                    </div>
+                </div>
+                <div class="dos-grid">
+
+                    <div class="un-grid-sombreado-full">
+                        <h3 class="h3-negritas">13. DOCUMENTO QUE ACREDITA LA PROPIEDAD</h3>
+                        <label><input type="radio" name="vivienda_acredita_propiedad" value="escritura"> Escritura</label>
+                        <label><input type="radio" name="vivienda_acredita_propiedad" value="contrato_compra_venta"> Contrato de compra venta</label>
+                        <label><input type="radio" name="vivienda_acredita_propiedad" value="resolucion_judicial"> Resolución judicial</label>
+                        <label><input type="radio" name="vivienda_acredita_propiedad" value="certificado_posesion"> Certificado de posesión</label>
+                        <label><input type="radio" name="vivienda_acredita_propiedad" value="contrato_arrendamiento"> Contrato de arrendamiento</label>
+                        <label><input type="radio" name="vivienda_acredita_propiedad" value="certificado_parcelario/agrario"> Contrato parcelario/agrario</label>
+                        <label><input type="radio" name="vivienda_acredita_propiedad" value="cesion_derechos"> Cesión de derechos</label>
+                        <div>
+                            <input type="radio" name="vivienda_acredita_propiedad" value="otro">
+                            <input type="text" name="vivienda_acredita_propiedad_otro" placeholder="Otro" class="input-otro">
+                        </div>
+                    </div>
+
+                    <div class="un-grid-sombreado-full">
+                        <h3 class="h3-negritas">14. MOTIVO POR EL CUAL NO POSEE ESCRITURAS O TÍTULO DE PROPIEDAD</h3>
+                        <label><input type="radio" name="vivienda_noacredita_propiedad_motivo" value="no_completo_tramite/registro"> No he completado el trámite o registro</label>
+                        <label><input type="radio" name="vivienda_noacredita_propiedad_motivo" value="no_ha_pagado"> No he terminado de pagar</label>
+                        <label><input type="radio" name="vivienda_noacredita_propiedad_motivo" value="altos_costos"> Altos costos de escrituración</label>
+                        <label><input type="radio" name="vivienda_noacredita_propiedad_motivo" value="en_proceso"> En proceso de herencia o sucesión</label>
+                        <label><input type="radio" name="vivienda_noacredita_propiedad_motivo" value="asentamiento_irregular"> Es un asentamiento irregular</label>
+                        <label><input type="radio" name="vivienda_noacredita_propiedad_motivo" value="no_tengo_conocimientos"> No tengo conocimientos de cómo hacer el trámite</label>
+                        <label><input type="radio" name="vivienda_noacredita_propiedad_motivo" value="perdi_documentos"> Perdí mis documentos originales</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="educacion-wrapper">
+                <div class="section-title">4. EDUCACIÓN</div>
+                <div class="cuatro-grid">
+                    <div class="form-row-sombreado">
+                        <h3 class="h3-negritas">15. ¿SABE LEER? </h3>
+                        <label><input type="radio" name="educacion_leer" value="no"> No</label>
+                        <label><input type="radio" name="educacion_leer" value="si"> Sí</label>
+                    </div>
+                    <div class="form-row-sombreado">
+                        <h3 class="h3-negritas">16. ¿SABE ESCRIBIR? </h3>
+                        <label><input type="radio" name="educacion_escribir" value="no"> No</label>
+                        <label><input type="radio" name="educacion_escribir" value="si"> Sí</label>
+                    </div>
+                    <div class="form-row-sombreado">
+                        <h3 class="h3-negritas">17. ¿SABE USAR COMPUTADORA? </h3>
+                        <label><input type="radio" name="educacion_computadora" value="no"> No</label>
+                        <label><input type="radio" name="educacion_computadora" value="si"> Sí</label>
+                    </div>
+                    <div class="form-row-sombreado">
+                        <h4 class="h3-negritas">18. ¿SABE USAR CELULAR? </h3>
+                        <label><input type="radio" name="educacion_celular" value="no"> No</label>
+                        <label><input type="radio" name="educacion_celular" value="si"> Sí</label>
+                    </div>
+                </div>
+                <div class="cuatro-grid-sombreado">
+                    <h3 class="h3-negritas">19. ¿CUÁL ES SU ÚLTIMO GRADO DE ESTUDIOS?</h3>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+
+                    <label><input type="radio" name="educacion_ultimo_grado_estudio" value="ninguno"> Ninguno</label>
+                    <label><input type="radio" name="educacion_ultimo_grado_estudio" value="preescolar"> Preescolar</label>   
+                    <label><input type="radio" name="educacion_ultimo_grado_estudio" value="primaria"> Primaria</label>
+                    <label><input type="radio" name="educacion_ultimo_grado_estudio" value="secundaria"> Secundaria</label> 
+                            
+                    <label><input type="radio" name="educacion_ultimo_grado_estudio" value="preparatoria"> Preparatoria</label>
+                    <label><input type="radio" name="educacion_ultimo_grado_estudio" value="bachillerato_técnologico"> Bachillerato técnologico</label>   
+                    <label><input type="radio" name="educacion_ultimo_grado_estudio" value="estudios_tecnicos"> Estudios técnicos</label>
+                    <label><input type="radio" name="educacion_ultimo_grado_estudio" value="normal"> Normal</label>
+                            
+                    <label><input type="radio" name="educacion_ultimo_grado_estudio" value="licenciatura"> Licenciatura</label>
+                    <label><input type="radio" name="educacion_ultimo_grado_estudio" value="especialidad"> Especialidad</label>   
+                    <label><input type="radio" name="educacion_ultimo_grado_estudio" value="maestria"> Maestría</label>
+                    <label><input type="radio" name="educacion_ultimo_grado_estudio" value="doctorado"> Doctorado</label> 
+                </div>
+                <div class="form-row-sombreado">
+                    <h3 class="h3-negritas">¿QUÉ ESTUDIÓ?</h3>
+                    <div class="div-flexible">
+                        <input type="text" name="educacion_que_estudio" class="input-flexible">
+                    </div>
+                </div>
+            </div>
+
+            <div class="ocupacion-ingreso-wrapper">
+                <div class="section-title">5. OCUPACIÓN E INGRESO ECONÓMICO</div>
+                <!--primera fila seccion 5-->
+                <div class="dos-grid-auto-resto">
+                    <div class="form-sombreado-full">
+                        <h3 class="h3-negritas">20. ¿ACTUALMENTE TRABAJA?</h3>
+                        <div class="alineado-centro">
+                            <label><input type="radio" name="actualmente_trabaja" value="no"> No</label>
+                            <label><input type="radio" name="actualmente_trabaja" value="si"> Sí</label> 
+                        </div>
+                    </div>
+                    <div class="form-sombreado-full">
+                        <h3 class="h3-negritas">21. ¿A QUÉ SE DEDICA?</h3>
+                        <div>
+                            <label><input type="radio" name="cual_ocupacion" value="hogar"> Hogar</label>
+                            <label><input type="radio" name="cual_ocupacion" value="empleado"> Empleado</label>   
+                            <label><input type="radio" name="cual_ocupacion" value="obrera/o"> Obrera(o)</label>
+                            <label><input type="radio" name="cual_ocupacion" value="campo"> Al campo</label> 
+                            <label><input type="radio" name="cual_ocupacion" value="servidor_publico"> Servidor publico</label>
+                            <label><input type="radio" name="cual_ocupacion" value="cuenta_propia"> Cuenta propia</label> 
+                        </div>
+                    </div>
+                </div>
+                <div class="dos-grid-auto-resto">
+                    <div class="form-sombreado-full-nb">
+                        <div>
+                            <h3 class="h3-negritas">22. ¿RECIBE REMUNERACIÓN POR LA ACTIVIDAD QUE REALIZA?</h3>
+                            <div class="alineado-centro">
+                                <label><input type="radio" name="recibe_remuneracion_ocupacion" value="no"> No</label>
+                                <label><input type="radio" name="recibe_remuneracion_ocupacion" value="si"> Sí</label> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-sombreado-full-nb">
+                        <h3 class="h3-negritas-ns">23. ¿CÚAL ES SU INGRESO MENSUAL EN PESOS?</h3>
+                        <div class="cuatro-grid-ns">
+                            <label><input type="radio" name="cantidad_recibe_remuneracion_ocupacion" value="menos-3750"> Menos 3750</label>
+                            <label><input type="radio" name="cantidad_recibe_remuneracion_ocupacion" value="3750-7500"> 3,750-7,500</label>
+                            <label><input type="radio" name="cantidad_recibe_remuneracion_ocupacion" value="7500-11500"> 7,500-11,500</label> 
+                            <label><input type="radio" name="cantidad_recibe_remuneracion_ocupacion" value="11500-15000"> 11,500-15,000</label>
+                            <label><input type="radio" name="cantidad_recibe_remuneracion_ocupacion" value="15000-18750"> 15,000-18,750</label>
+                            <label><input type="radio" name="cantidad_recibe_remuneracion_ocupacion" value="18750-22500"> 18,750-22,500</label> 
+                            <label><input type="radio" name="cantidad_recibe_remuneracion_ocupacion" value="22500-26250"> 22,500-26,250</label> 
+                            <label><input type="radio" name="cantidad_recibe_remuneracion_ocupacion" value="26250-30000"> 26,250-30,000</label> 
+                            <label><input type="radio" name="cantidad_recibe_remuneracion_ocupacion" value="30000-33750"> 30,000-33,750</label> 
+                            <label><input type="radio" name="cantidad_recibe_remuneracion_ocupacion" value="33750-37500"> 33,750-37,500</label> 
+                            <label><input type="radio" name="cantidad_recibe_remuneracion_ocupacion" value="mas+37500"> Más de 37,500</label> 
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="dos-grid-auto-resto">
+                        <div class="form-sombreado-full">
+                            <h3 class="h3-negritas">24. ¿RECIBE UN INGRESO ADICIONAL?</h3>
+                            <div class="alineado-centro">
+                                <label><input type="radio" name="recibe_ingreso_adicional" value="no"> No</label>
+                                <label><input type="radio" name="recibe_ingreso_adicional" value="si"> Sí</label> 
+                            </div>
+                        </div>
+                        <div class="form-sombreado-full">
+                            <h3 class="h3-negritas">25. ¿CÚAL ES EL ORIGEN?</h3>
+                            <div class="form-row">
+                                <label><input type="radio" name="recibe_ingreso_adicional_origen" value="pensiom"> Pensión</label>
+                                <label><input type="radio" name="recibe_ingreso_adicional_origen" value="beca"> Beca</label> 
+                                <label><input type="radio" name="recibe_ingreso_adicional_origen" value="pension_y_bienestar"> Pensión o programa bienestar</label>
+                                <label><input type="radio" name="recibe_ingreso_adicional_origen" value="apoyo_familiar"> Apoyo familiar</label>
+                                <div>
+                                    <input type="radio" name="recibe_ingreso_adicional_origen" value="otro">
+                                    <input type="text" name="recibe_ingreso_adicional_origen_otro" placeholder="Otro" class="input-otro">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dos-grid-auto-resto">
+                        <div class="form-sombreado-full">
+                            <h3 class="h3-negritas">26. ¿DEPENDE ECONÓMICAMENTE DE ALGUIEN?</h3>
+                            <div class="alineado-centro">
+                                <label><input type="radio" name="depende_economicamente" value="no"> No</label>
+                                <label><input type="radio" name="depende_economicamente" value="si"> Sí</label> 
+                            </div>
+                        </div>
+                        <div class="form-sombreado-full">
+                            <h3 class="h3-negritas">¿DE QUIÉN?</h3>
+                            <div class="tres-grid">
+                                <label><input type="radio" name="depende_economicamente_quien" value="esposa/o"> Esposa(o)</label>
+                                <label><input type="radio" name="depende_economicamente_quien" value="hija/o"> Hija(o)</label> 
+                                <label><input type="radio" name="depende_economicamente_quien" value="hermana/o"> Hermana(o)</label> 
+                                <label><input type="radio" name="depende_economicamente_quien" value="nieta/o"> Nieta(o)</label> 
+                                <div>
+                                    <input type="radio" name="depende_economicamente_quien" value="otro">
+                                    <input type="text" name="recibe_ingreso_adicional_origen_otro" placeholder="Otro" class="input-otro">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dos-grid-auto-resto">
+                        <div class="form-sombreado-full">
+                            <h3 class="h3-negritas">27. ¿ALGUIEN DEPENDE ECONÓMICAMENTE DE USTED?</h3>
+                            <div class="alineado-centro">
+                                <label><input type="radio" name="alguien_depende_economicamente_de_usted" value="no"> No</label>
+                                <label><input type="radio" name="alguien_depende_economicamente_tuyo" value="si"> Sí</label> 
+                            </div>
+                        </div>
+                        <div class="form-sombreado-full">
+                            <h3 class="h3-negritas">¿QUIÉN?</h3>
+                            <div class="tres-grid">
+                                <label><input type="radio" name="alguien_depende_economicamente_de_usted_quien" value="esposa/o"> Esposa(o)</label>
+                                <label><input type="radio" name="alguien_depende_economicamente_de_usted_quien" value="hija/o"> Hija(o)</label> 
+                                <label><input type="radio" name="alguien_depende_economicamente_de_usted_quien" value="hermana/o"> Hermana(o)</label> 
+                                <label><input type="radio" name="alguien_depende_economicamente_de_usted_quien" value="nieta/o"> Nieta(o)</label> 
+                                <div>
+                                    <input type="radio" name="alguien_depende_economicamente_de_usted_quien" value="otro">
+                                    <input type="text" name="alguien_depende_economicamente_de_usted_quien_otro" placeholder="Otro" class="input-otro">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="form-step" id="step-3" style="display: none;">
+            <h2 class="alineado-centro">Sección 3</h2> 
+            <div class="salud-wrapper">
+                <div class="section-title">6. SALUD</div>
+                <h3 class="h3-rojo">6.1 ANTECENDENTES DE SALUD</h3>
+                <div class="tres-grid-ns">
+                    <div>
+                        <h3 class="h3-negritas-nsnp">28. MARQUE SI HA TENIDO:</h3>
+                    </div>
+                    <div class="cinco-grid-26-19-resto">
+                        <h3 class="h3-negritas-nsnp">29. FAMILIARES</h3>
+                        <h5 class="h5-blanca">DIABETES</h5>
+                        <h5 class="h5-blanca">HIPERTENSIÓN</h5>
+                        <h5 class="h5-blanca">INFARTO</h5>
+                        <h5 class="h5-blanca">CÁNCER</h5>
+                    </div>
+                    <div class="tres-grid-40-resto">
+                        <h3 class="h3-negritas-nsnp">30. CONSUMO DE SUSTANCIAS</h3>
+                        <div class="alineado-centro">
+                            <h5 class="h5-blanca">DIARIO</h5>
+                        </div>
+                        <div class="alineado-centro">
+                            <h5 class="h5-blanca">ALGUNOS DÍAS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="tres-grid-ns">
+                    <div class="form-sombreado-full">
+                        <div class="div-centro">
+                            <div>
+                                <label><input type="radio" name="enfermedades_haz_tenido_alergia" value="si"> Alergia</label>
+                                <input type="text" name="enfermedades_haz_tenido_alergias_cual" placeholder="____" class="input-otro-nsnc">
+                            </div>
+                            <label><input type="radio" name="enfermedades_haz_tenido_transfusion" value="si"> Transfusión</label>
+                            <div>
+                                <label><input type="radio" name="enfermedades_haz_tenido_otra" value="si"> Otra </label>
+                                <input type="text" name="enfermedades_haz_tenido_otra_cual" placeholder="____" class="input-otro-nsnc">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-sombreado">
+                        <div class="cinco-grid-26-19-resto">
+                            <label><input type="radio" name="familiares_enfermedades_madre" value="si"> Madre </label>
+                            <div class="alineado-centro"><input type="radio" name="familiares_enfermedades_madre_diabetes" value="si"></div>
+                            <div class="alineado-centro"><input type="radio" name="familiares_enfermedades_madre_hipertension" value="si"></div>
+                            <div class="alineado-centro"><input type="radio" name="familiares_enfermedades_madre_infarto" value="si"></div>
+                            <div class="alineado-centro"><input type="radio" name="familiares_enfermedades_madre_cancer" value="si"></div>
+
+                            <label><input type="radio" name="familiares_enfermedades_padre" value="si"> Padre </label>
+                            <div class="alineado-centro"><input type="radio" name="familiares_enfermedades_padre_diabetes" value="si"></div>
+                            <div class="alineado-centro"><input type="radio" name="familiares_enfermedades_padre_hipertension" value="si"></div>
+                            <div class="alineado-centro"><input type="radio" name="familiares_enfermedades_padre_infarto" value="si"></div>
+                            <div class="alineado-centro"><input type="radio" name="familiares_enfermedades_padre_cancer" value="si"></div>
+
+                            <label><input type="radio" name="familiares_enfermedades_hermanos" value="si"> Hermanos </label>
+                            <div class="alineado-centro"><input type="radio" name="familiares_enfermedades_hermanos_diabetes" value="si"></div>
+                            <div class="alineado-centro"><input type="radio" name="familiares_enfermedades_hermanos_hipertension" value="si"></div>
+                            <div class="alineado-centro"><input type="radio" name="familiares_enfermedades_hermanos_infarto" value="si"></div>
+                            <div class="alineado-centro"><input type="radio" name="familiares_enfermedades_hermanos_cancer" value="si"></div>
+                        </div>
+                    </div>
+                    <div class="form-sombreado">
+                        <div class="tres-grid-40-resto">
+                            <label><input type="radio" name="consumo_sustancias" value="tabaco"> Tabaco </label>
+                            <div class="alineado-centro">
+                                <input type="radio" name="consumo_sustancias_tabaco" value="diario">
+                            </div>
+                            <div class="alineado-centro">
+                                <input type="radio" name="consumo_sustancias_tabaco" value="algunos dias">
+                            </div>
+
+                            <label><input type="radio" name="consumo_sustancias" value="alcohol"> Alcohol </label>
+                            <div class="alineado-centro">
+                                <input type="radio" name="consumo_sustancias_alcohol" value="diario">
+                            </div>
+                            <div class="alineado-centro">
+                                <input type="radio" name="consumo_sustancias_alcohol" value="algunos dias">
+                            </div>
+
+                            <label><input type="radio" name="consumo_sustancias" value="otro"> Otra </label>
+                            <div class="alineado-centro">
+                                <input type="radio" name="consumo_sustancias_otro" value="diario">
+                            </div>
+                            <div class="alineado-centro">
+                                <input type="radio" name="consumo_sustancias_otro" value="algunos dias">
+                            </div>
+                        </div>
+                    </div>
+                <div>
+            </div>
+        </div>
+        <div class="dos-grid">
+            <div class="form-sombreado">
+                <h3 class="h3-negritas">31. ¿LE HAN REALIZADO ALGUNA CIRUGÍA?</h3>
+                <div class="form-row">
+                    <label><input type="radio" name="haz_tenido_cirugias" value="no"> No </label>
+                    <label><input type="radio" name="haz_tenido_cirugias" value="si"> Sí </label>
+                    <div>
+                        <input type="text" name="haz_tenido_cirugias_cual" placeholder="¿Cuál?" class="input-otro">
+                    </div>
+                </div>
+            </div>
+            <div class="form-sombreado">
+                <h3 class="h3-negritas">32. ¿SABE SÍ REQUIERE ALGUNA CIRUGÍA?</h3>
+                <div class="form-row">
+                    <label><input type="radio" name="requieres_cirugia" value="no"> No </label>
+                    <label><input type="radio" name="requieres_cirugia" value="si"> Sí </label>
+                    <div>
+                        <input type="text" name="requieres_cirugia_cual" placeholder="¿Cuál?" class="input-otro">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Primera fila form vacunas-->
+        <div class="dos-grid">
+            <div class="form-row-mb">
+                <h3 class="h3-rojo">6.2 VACUNAS</h3>
+                <h4 class="h4-rojo-ns">33. MARQUE VACUNAS RECIBIDAS</h4>
+            </div>
+
+            <div class="dos-grid">
+                <h5 class="h5-blanca">FECHA DE ÚLTIMA VACUNACIÓN</h5>
+                <h5 class="h5-blanca">VECES QUE SE HA VACUNADO</h5>
+            </div>
+        </div>
+        <!--Segunda fila form vacunas-->
+        <div class="dos-grid-nmt">
+            <div class="un-grid-sombreado-full-ns">
+                <div class="tres-grid-nsnc">
+                    <div class="div-alineado-centro-h">
+                        <div class="alineado-izquierda">
+                            <h4 class="h4-negritas-w">NEUMOCÓCICA</h4>
+                        </div>
+                    </div>
+                    <div class="div-alineado-centro-h">
+                        <h4 class="h4-negritas-pw-np">Neumonía por neumococo</h5>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="vacunas_recibida_neumococica" value="no"> No </label>
+                        <label><input type="radio" name="vacunas_recibida_neumococica" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="dos-grid-nc">
+                <input type="text" name="fecha_ultima_vacunacion_neumococica" class="input-flexible-sombreado-nb">
+                <input type="text" name="veces_que_se_ha_vacunado_neumococica" class="input-flexible-sombreado-nb">
+            </div>
+        <!--Tercera fila form vacunas-->
+            <div class="un-grid-sombreado-full-ns">
+                <div class="tres-grid-nsnc">
+                    <div class="div-alineado-centro-h">
+                        <h4 class="h4-negritas-w">INFLUENZA ESTACIONAL</h4>
+                    </div>
+                    <div class="div-alineado-centro-h">
+                        <h4 class="h4-negritas-pw-np"> Neumonía por virus de la influenza A y B</h5>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="vacunas_recibida_influenza" value="no"> No </label>
+                        <label><input type="radio" name="vacunas_recibida_influenza" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="dos-grid-nc">
+                <input type="text" name="fecha_ultima_vacunacion_influenza_estacional" class="input-flexible-sombreado-nb">
+                <input type="text" name="veces_que_se_ha_vacunado_influenza_estacional" class="input-flexible-sombreado-nb">
+            </div>
+            <!--Cuarta fila form vacunas-->
+            <div class="un-grid-sombreado-full-ns">
+                <div class="tres-grid-nsnc">
+                    <div class="div-alineado-centro-h">
+                        <h4 class="h4-negritas-w">TD</h4>
+                    </div>
+                    <div class="div-alineado-centro-h">
+                        <h4 class="h4-negritas-pw"> Tétano y la difteria</h5>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="vacunas_recibida_tetano/difteria" value="no"> No </label>
+                        <label><input type="radio" name="vacunas_recibida_tetano/difteria" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="dos-grid-nc">
+                <input type="text" name="fecha_ultima_vacunacion_tetano/difteria" class="input-flexible-sombreado-nb">
+                <input type="text" name="veces_que_se_ha_vacunado_tetano/difteria" class="input-flexible-sombreado-nb">
+            </div>
+            <!--Quinta fila form vacunas-->
+            <div class="un-grid-sombreado-full-ns">
+                <div class="tres-grid-nsnc">
+                    <div class="div-alineado-centro-h">
+                        <h4 class="h4-negritas-w">COVID 19</h4>
+                    </div>
+                    <div class="div-alineado-centro-h">
+                        <h4 class="h4-negritas-pw"> Formas graves de COVID 19</h5>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="vacunas_recibida_covid19" value="no"> No </label>
+                        <label><input type="radio" name="vacunas_recibida_covid19" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="dos-grid-nc">
+                <input type="text" name="fecha_ultima_vacunacion_covid19" class="input-flexible-sombreado-nb">
+                <input type="text" name="veces_que_se_ha_vacunado_covid19" class="input-flexible-sombreado-nb">
+            </div>
+            <!--Sexta fila form vacunas-->
+            <div class="un-grid-sombreado-full-ns">
+                <div class="dos-grid-66-resto">
+                    <div class="div-alineado-centro-h">
+                        <h4 class="h4-negritas-w">OTRAS VACUNAS</h4>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="vacunas_recibida_covid19" value="no"> No </label>
+                        <label><input type="radio" name="vacunas_recibida_covid19" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="dos-grid-nc"> 
+                <input type="text" name="fecha_ultima_vacunacion_otra" class="input-flexible-sombreado-nb">
+                <input type="text" name="veces_que_se_ha_vacunado_otra" class="input-flexible-sombreado-nb">
+            </div>
+        </div>
+        <!--form enfermedades-->    
+        <div>
+            <h3 class="h3-rojo">6.3 ENFERMEDADES</h3>
+        </div>
+        <!--Primera fila form enfermedades-->
+        <div class="dos-grid-nmt">
+                <h4 class="h4-rojo-ns">34. MARQUE SI PADECE ALGUNA DE LAS SIGUIENTES ENFERMEDADES</h4>
+            <div class="dos-grid-nmt">
+                <h5 class="h5-blanca">FECHA</h5>
+                <h5 class="h5-blanca">DIAGNOSTICO</h5>
+            </div>
+        </div>
+        <!--Segunda fila form enfermedades-->
+        <div class="dos-grid">
+            <div class="un-grid-sombreado-full-ns">
+                <div class="dos-grid-66-resto">
+                    <div class="div-alineado-centro-h">
+                        <div class="alineado-izquierda">
+                            <h4 class="h4-negritas-w">DIABETES MELLITUS</h4>
+                        </div>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="enfermedades_padece_diabetes_mellitus" value="no"> No </label>
+                        <label><input type="radio" name="enfermedades_padece_diabetes_mellitus" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="dos-grid-nc">
+                <input type="text" name="fecha_diabetes" class="input-flexible-sombreado-nb">
+                <input type="text" name="diagnostico_diabetes" class="input-flexible-sombreado-nb">
+            </div>
+        <!--Tercera fila form enfermedades-->
+            <div class="un-grid-sombreado-full-ns">
+                <div class="dos-grid-66-resto">
+                    <div class="div-alineado-centro-h">
+                        <h4 class="h4-negritas-w">HIPERCOLESTEROLEMIA</h4>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="enfermedades_padece_hipercolesterolemia" value="no"> No </label>
+                        <label><input type="radio" name="enfermedades_padece_hipercolesterolemia" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="dos-grid-nc">
+                <input type="text" name="fecha_hipercolesterolemia" class="input-flexible-sombreado-nb">
+                <input type="text" name="diagnostico_hipercolesterolemia" class="input-flexible-sombreado-nb">
+            </div>
+        <!--Cuarta fila form enfermedades-->
+            <div class="un-grid-sombreado-full-ns">
+                <div class="dos-grid-66-resto">
+                    <div class="div-alineado-centro-h">
+                        <h4 class="h4-negritas-w">COLESTEROL</h4>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="enfermedades_padece_colesterol" value="no"> No </label>
+                        <label><input type="radio" name="enfermedades_padece_colesterol" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="dos-grid-nc">
+                <input type="text" name="fecha_colesterol" class="input-flexible-sombreado-nb">
+                <input type="text" name="diagnostico_colesterol" class="input-flexible-sombreado-nb">
+            </div>
+        
+            <div class="un-grid-sombreado-full-ns">
+                <div class="dos-grid-66-resto">
+                    <div class="div-alineado-centro-h">
+                        <h4 class="h4-negritas-w">ARTRITIS</h4>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="enfermedades_padece_artritis" value="no"> No </label>
+                        <label><input type="radio" name="enfermedades_padece_artritis" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="dos-grid-nc">
+                <input type="text" name="fecha_artritis" class="input-flexible-sombreado-nb">
+                <input type="text" name="diagnostico_artritis" class="input-flexible-sombreado-nb">
+            </div>
+        <!--Sexta fila form enfermedades-->
+            <div class="un-grid-sombreado-full-ns">
+                <div class="dos-grid-66-resto">
+                    <div class="div-alineado-centro-h">
+                        <h4 class="h4-negritas-w">HIPERTENSIÓN ARTERIAL</h4>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="enfermedades_padece_hipertension_arterial" value="no"> No </label>
+                        <label><input type="radio" name="enfermedades_padece_hipertension_arterial" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="dos-grid-nc">
+                <input type="text" name="fecha_hipertension_arterial" class="input-flexible-sombreado-nb">
+                <input type="text" name="diagnostico_hipertension_arterial" class="input-flexible-sombreado-nb">
+            </div>
+        <!--Septima fila form enfermedades-->
+            <div class="un-grid-sombreado-full-ns">
+                <div class="dos-grid-66-resto">
+                    <div class="div-alineado-centro-h">
+                        <h4 class="h4-negritas-w">TUBERCULOSIS PULMONAR</h4>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="enfermedades_padece_tuberculosis_pulmonar" value="no"> No </label>
+                        <label><input type="radio" name="enfermedades_padece_tuberculosis_pulmonar" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="dos-grid-nc">
+                <input type="text" name="fecha_tuberculosis_pulmonar" class="input-flexible-sombreado-nb">
+                <input type="text" name="diagnostico_tuberculosis_pulmonar" class="input-flexible-sombreado-nb">
+            </div>
+        <!--Octava fila form enfermedades-->
+            <div class="un-grid-sombreado-full-ns">
+                <div class="dos-grid-66-resto">
+                    <div class="div-alineado-centro-h">
+                        <h4 class="h4-negritas-w">CÁNCER</h4>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="enfermedades_padece_cancer" value="no"> No </label>
+                        <label><input type="radio" name="enfermedades_padece_cancer" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="dos-grid-nc">
+                <input type="text" name="fecha_cancer" class="input-flexible-sombreado-nb">
+                <input type="text" name="diagnostico_cancer" class="input-flexible-sombreado-nb">
+            </div>
+        <!--Novena fila form enfermedades-->
+            <div class="un-grid-sombreado-full-ns">
+                <div class="dos-grid-66-resto">
+                    <div class="div-alineado-centro-h">
+                        <h4 class="h4-negritas-w">CATARATAS</h4>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="enfermedades_padece_cataratas" value="no"> No </label>
+                        <label><input type="radio" name="enfermedades_padece_cataratas" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="dos-grid-nc">
+                <input type="text" name="fecha_cataratas" class="input-flexible-sombreado-nb">
+                <input type="text" name="diagnostico_cataratas" class="input-flexible-sombreado-nb">
+            </div>
+        <!--Decima fila form enfermedades-->
+            <div class="un-grid-sombreado-full-ns">
+                <div class="dos-grid-66-resto">
+                    <div class="div-alineado-centro-h">
+                        <h4 class="h4-negritas-w">OTRAS</h4>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="enfermedades_padece_otras" value="no"> No </label>
+                        <label><input type="radio" name="enfermedades_padece_otras" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="dos-grid-nc">
+                <input type="text" name="fecha_otra" class="input-flexible-sombreado-nb">
+                <input type="text" name="diagnostico_otra" class="input-flexible-sombreado-nb">
+            </div>
+        </div>
+    <!-- Termina primera parte p30-p33-->
+        <div class="dos-grid-80-resto">
+            <div class="form-row-mb">
+                <h3 class="h3-rojo-ns">6.4 ESTUDIOS CLÍNICOS</h3>
+                <h4 class="h4-rojo-ns">35. MARQUE SI SE HA REALIZADO ALGUNO DE LOS SIGUIENTES ESTUDIOS</h4>
+            </div>
+            <h5 class="h5-blanca">FECHA DE ÚLTIMA TOMA</h5>
+        </div>
+        <div class="dos-grid-80-resto">
+            <div class="un-grid-sombreado-full-nsnp"> 
+                <div class="dos-grid-66-resto">
+                    <div>
+                        <h4 class="h4-negritas-w-np">MEDICIÓN GLUCOSA DE SANGRE CAPILAR</h4>
+                        <h4 class="h4-negritas-pw-np">Diabetes mellitus</h5>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="se_ha_realizado_medicion_glucosa_sangre_capilar" value="no"> No </label>
+                        <label><input type="radio" name="se_ha_realizado_medicion_glucosa_sangre_capilar" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="un-grid-sombreado-full-nsnp">
+                <input type="text" name="fecha_ultima_toma_estudio_clinico_glucosa_sangre_capilar" class="input-flexible-sombreado-nb">
+            </div>
+
+            <div class="un-grid-sombreado-full-nsnp"> 
+                <div class="dos-grid-66-resto">
+                    <div>
+                        <h4 class="h4-negritas-w-np">MEDICIÓN PRESIÓN ARTERIAL</h4>
+                        <h4 class="h4-negritas-pw-np">Hipertensión arterial</h5>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="se_ha_realizado_medicion_presion_arterial" value="no"> No </label>
+                        <label><input type="radio" name="se_ha_realizado_medicion_presion_arterial" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="un-grid-sombreado-full-nsnp">
+                <input type="text" name="fecha_ultima_toma_estudio_clinico_presion_arterial" class="input-flexible-sombreado-nb">
+            </div>
+
+            <div class="un-grid-sombreado-full-nsnp"> 
+                <div class="dos-grid-66-resto">
+                    <div>
+                        <h4 class="h4-negritas-w-np">MEDICIÓN COLESTEROL</h4>
+                        <h4 class="h4-negritas-pw-np">Hipercolesterolemia</h5>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="se_ha_realizado_medicion_colesterol" value="no"> No </label>
+                        <label><input type="radio" name="se_ha_realizado_medicion_colesterol" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="un-grid-sombreado-full-nsnp">
+                <input type="text" name="fecha_ultima_toma_estudio_clinico_colesterol" class="input-flexible-sombreado-nb">
+            </div>
+
+            <div class="un-grid-sombreado-full-nsnp"> 
+                <div class="dos-grid-66-resto">
+                    <div>
+                        <h4 class="h4-negritas-w-np">BASILOSCOPÍA</h4>
+                        <h4 class="h4-negritas-pw-np">Tuberculosis pulmonar</h5>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="se_ha_realizado_medicion_basiloscopia" value="no"> No </label>
+                        <label><input type="radio" name="se_ha_realizado_medicion_basiloscopia" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="un-grid-sombreado-full-nsnp">
+                <input type="text" name="fecha_ultima_toma_estudio_tuberculosis_pulmonar" class="input-flexible-sombreado-nb">
+            </div>
+
+            <div class="un-grid-sombreado-full-nsnp"> 
+                <div class="dos-grid-66-resto">
+                    <div>
+                        <h4 class="h4-negritas-w-np">PERFÍL DE LÍPIDOS</h4>
+                        <h4 class="h4-negritas-pw-np">Dislipidemias</h5>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="se_ha_realizado_medicion_perfil_lipidos" value="no"> No </label>
+                        <label><input type="radio" name="se_ha_realizado_medicion_perfil_lipidos" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="un-grid-sombreado-full-nsnp">
+                <input type="text" name="fecha_ultima_toma_estudio_lipidos" class="input-flexible-sombreado-nb">
+            </div>
+
+            <div class="un-grid-sombreado-full-nsnp"> 
+                <div class="dos-grid-66-resto">
+                    <div>
+                        <h4 class="h4-negritas-w-np">EXAMEN CLÍNICO DE MAMA</h4>
+                        <h4 class="h4-negritas-pw-np">Cáncer de mama</h5>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="se_ha_realizado_medicion_clinico_de_mama" value="no"> No </label>
+                        <label><input type="radio" name="se_ha_realizado_medicion_clinico_de_mama" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="un-grid-sombreado-full-nsnp">
+                <input type="text" name="fecha_ultima_toma_estudio_de_mama" class="input-flexible-sombreado-nb">
+            </div>
+
+            <div class="un-grid-sombreado-full-nsnp"> 
+                <div class="dos-grid-66-resto">
+                    <div>
+                        <h4 class="h4-negritas-w-np">MASTOGRAFÍA</h4>
+                        <h4 class="h4-negritas-pw-np">Cáncer de mama</h5>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="se_ha_realizado_medicion_mastografia" value="no"> No </label>
+                        <label><input type="radio" name="se_ha_realizado_medicion_mastografia" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="un-grid-sombreado-full-nsnp">
+                <input type="text" name="fecha_ultima_toma_estudio_mastografia" class="input-flexible-sombreado-nb">
+            </div>
+
+            <div class="un-grid-sombreado-full-nsnp"> 
+                <div class="dos-grid-66-resto">
+                    <div>
+                        <h4 class="h4-negritas-w-np">CITOLOGÍA CERVICAL PAPANICOLAU</h4>
+                        <h4 class="h4-negritas-pw-np">Cáncer de cuello uterino</h5>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="se_ha_realizado_medicion_citologia_cervical_papanicolau" value="no"> No </label>
+                        <label><input type="radio" name="se_ha_realizado_medicion_citologia_cervical_papanicolau" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="un-grid-sombreado-full-nsnp">
+                <input type="text" name="fecha_ultima_toma_estudio_citologia_cervial_papanicolau" class="input-flexible-sombreado-nb">
+            </div>
+
+            <div class="un-grid-sombreado-full-nsnp"> 
+                <div class="dos-grid-66-resto">
+                    <div>
+                        <h4 class="h4-negritas-w-np">TACTO RECTAL</h4>
+                        <h4 class="h4-negritas-pw-np">Crecimiento prostatico / Cáncer de próstata</h5>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="se_ha_realizado_medicion_tacto_rectal" value="no"> No </label>
+                        <label><input type="radio" name="se_ha_realizado_medicion_tacto_rectal" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="un-grid-sombreado-full-nsnp">
+                <input type="text" name="fecha_ultima_toma_estudio_tacto_rectal" class="input-flexible-sombreado-nb">
+            </div>
+
+            <div class="un-grid-sombreado-full-nsnp"> 
+                <div class="dos-grid-66-resto">
+                    <div>
+                        <h4 class="h4-negritas-w-np">ANTÍGENO PROSTÁTICO</h4>
+                        <h4 class="h4-negritas-pw-np">Crecimiento prostatico/ Cáncer de próstata</h5>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="se_ha_realizado_medicion_antigeno_prostatico" value="no"> No </label>
+                        <label><input type="radio" name="se_ha_realizado_medicion_antigeno_prostatico" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="un-grid-sombreado-full-nsnp">
+                <input type="text" name="fecha_ultima_toma_estudio_antigeno_prostatico" class="input-flexible-sombreado-nb">
+            </div>
+
+            <div class="un-grid-sombreado-full-nsnp"> 
+                <div class="dos-grid-66-resto">
+                    <div>
+                        <h4 class="h4-negritas-w-np">DETECCIÓN DE VIH, SÍFILIS, VHC (HEPATITIS C)</h4>
+                        <h4 class="h4-negritas-pw-np">Infecciones de transmisión sexual</h5>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="se_ha_realizado_medicion_vih_sifilis_vhc" value="no"> No </label>
+                        <label><input type="radio" name="se_ha_realizado_medicion_vih_sifilis_vhc" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="un-grid-sombreado-full-nsnp">
+                <input type="text" name="fecha_ultima_toma_estudio_vih_sifilis_vhc" class="input-flexible-sombreado-nb">
+            </div>
+
+            <div class="un-grid-sombreado-full-nsnp"> 
+                <div class="dos-grid-66-resto">
+                    <div>
+                        <h4 class="h4-negritas-w-np">OTRA</h4>
+                    </div>
+                    <div class="div-alineado-centro-hv">
+                        <label><input type="radio" name="se_ha_realizado_medicion_otra" value="no"> No </label>
+                        <label><input type="radio" name="se_ha_realizado_medicion_otra" value="si"> Sí </label>
+                    </div>
+                </div>
+            </div>
+            <div class="un-grid-sombreado-full-nsnp">
+                <input type="text" name="fecha_ultima_toma_estudio_otro" class="input-flexible-sombreado-nb">
+            </div>
+        </div>    
+        </div>
+    </div>
+    <!--Seccion 4-->
+        <div class="form-step" id="step-4" style="display: none;">
+            <h2 class="alineado-centro">Sección 4</h2> 
+            <div class="salud-wrapper">
+                <div class="section-title">6. SALUD</div>
+                <h3 class="h3-rojo">6.5 VISITA AL MÉDICO</h3>
+                <div class="dos-grid-30-resto">
+                    <div class="form-sombreado-full-npr">
+                        <div class="form-row-npb">
+                            <div class="form-full-mb-11">
+                                <h4 class="h3-negritas-nsnp">36. TIPO DE SANGRE</h4>
+                            </div>
+                            <div class="alineado-centro">
+                                <div class="cuatro-grid-ns">
+                                    <label><input type="radio" name="tipo_de_sangre" value="a+">A+</label>
+                                    <label><input type="radio" name="tipo_de_sangre" value="a-">A-</label>
+                                    <label><input type="radio" name="tipo_de_sangre" value="b+">B+</label>
+                                    <label><input type="radio" name="tipo_de_sangre" value="b-">B-</label>
+                                    <label><input type="radio" name="tipo_de_sangre" value="ab+">AB+</label>
+                                    <label><input type="radio" name="tipo_de_sangre" value="ab-">AB-</label>
+                                    <label><input type="radio" name="tipo_de_sangre" value="o+">O+</label>
+                                    <label><input type="radio" name="tipo_de_sangre" value="o-">O-</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-sombreado-full">
+                        <div class="dos-grid-nc">
+                            <h4 class="h3-negritas-nsnp">37. ¿CÓMO CONSIDERA SU ESTADO DE SALUD?</h4>
+                            <div class="form-full-mt-1">
+                                <div class="cinco-grid">
+                                    <label><input type="radio" name="como_considera_estado_salud" value="muy_bueno">Muy bueno</label>
+                                    <label><input type="radio" name="como_considera_estado_salud" value="bueno">Bueno</label>
+                                    <label><input type="radio" name="como_considera_estado_salud" value="regular">Regular</label>
+                                    <label><input type="radio" name="como_considera_estado_salud" value="malo">Malo</label>
+                                    <label><input type="radio" name="como_considera_estado_salud" value="muy malo">Muy malo</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Segunda fila form 6.5-->
+                    <div class="form-sombreado-full">
+                        <div>
+                            <h4 class="h3-negritas-nsnp">38. ¿EN EL ÚLTIMO AÑO HA VISITADO A ALGÚN MÉDICO?</h4>
+                        </div>
+                        <div class="form-full-mt-1">
+                            <div class="alineado-centro">
+                                <label><input type="radio" name="ha_visitado_al_medico_el_ultimo_anio" value="no">No</label>
+                                <label><input type="radio" name="ha_visitado_al_medico_el_ultimo_anio" value="si">Sí</label>                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="un-grid-sombreado-full">
+                        <div class="dos-grid-30-resto">
+                            <h4 class="h3-negritas-nsnp">39. ¿CUÁL?</h4>
+                            <div>
+                                <div class="tres-grid-ns">
+                                    <label><input type="radio" name="ha_visitado_al_medico_el_ultimo_anio_cual" value="medico_general">Médico general</label>
+                                    <label><input type="radio" name="ha_visitado_al_medico_el_ultimo_anio_cual" value="hospitalizacion">Hospitalización</label>
+                                </div>
+                                <div class="tres-grid-ns">
+                                    <label><input type="radio" name="ha_visitado_al_medico_el_ultimo_anio_cual" value="especialista">Especialista</label>
+                                    <label><input type="radio" name="ha_visitado_al_medico_el_ultimo_anio_cual" value="dentista">Dentista</label>
+                                    <div>
+                                        <input type="radio" name="ha_visitado_al_medico_el_ultimo_anio_cual" value="otra">
+                                        <input type="text" name="ha_visitado_al_medico_el_ultimo_anio_cual_otro" placeholder="Otra" class="input-otro-grande">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Termina p36-p39-->
+                <div class="form-full-mt-1">
+                    <h3 class="h3-rojo">6.6 MEDICAMENTOS</h3>
+                </div>
+                <div class="dos-grid-30-resto">
+                    <div class="form-sombreado-full-npr">
+                        <div class="form-full-mt-12">
+                            <div class="dos-grid-66-resto">
+                                <h4 class="h3-negritas-nsnp">40. ¿TOMA MEDICAMENTO?</h4>
+                                <div class="div-alineado-centro">
+                                    <div>
+                                        <label><input type="radio" name="toma_medicamento" value="no">No</label>
+                                        <label><input type="radio" name="toma_medicamento" value="si">Sí</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-sombreado-full-nb">
+                        <div class="dos-grid-30-resto">
+                                <h4 class="h3-negritas-nsnp">41. ¿CON QUÉ FRECUENCIA?</h4>
+                            <div class="alineado-centro">
+                                <div class="tres-grid">
+                                    <div class="alineado-izquierda">
+                                        <label><input type="radio" name="toma_medicamento_frecuencia" value="diario">Diario</label>
+                                    </div>
+                                    <div class="alineado-izquierda">
+                                        <label><input type="radio" name="toma_medicamento_frecuencia" value="semanal">Semanal</label>
+                                    </div>
+                                    <div class="alineado-izquierda">
+                                        <label><input type="radio" name="toma_medicamento_frecuencia" value="mensual">Mensual</label>
+                                    </div>
+                                    <div class="alineado-izquierda">
+                                        <label><input type="radio" name="toma_medicamento_frecuencia" value="menos_de_una_vez_al_mes">Menos de 1 vez al mes</label>
+                                    </div>
+                                    <div class="alineado-izquierda">
+                                        <label><input type="radio" name="toma_medicamento_frecuencia" value="nada">Nada</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--acaba p40-p41-->
+                <div class="form-sombreado">
+                    <div class="dos-grid">
+                        <div class="form-row-npbl">
+                            <h4 class="h3-negritas-nsnp">42. ¿EN LOS ÚLTIMOS TRES MESES HA TENIDO ALGÚN PADECIMIENTO?</h4>
+                            <label><input type="radio" name="ha_tenido_padecimiento_ulitmos_tres_meses" value="no">No</label>
+                            <label><input type="radio" name="ha_tenido_padecimiento_ulitmos_tres_meses" value="si">Sí</label>
+                        </div>
+                        <div>
+                            <input type="text" name="ha_tenido_padecimiento_ulitmos_tres_meses_cual" placeholder="¿Cuál?" class="input-flexible">
+                        </div>
+                    </div>
+                </div>
+                <!-- Termina p42-->
+                <div class="form-full-mt-npl-1">
+                    <div class="form-sombreado">
+                        <h4 class="h3-negritas-nsnp">43. MEDICAMENTOS QUE LE RECETARON</h4>
+                        <div class="dos-grid">
+                            <input type="text" name="ha_tenido_padecimiento_ulitmos_tres_meses_cual_1" placeholder="1" class="input-rallado">
+                            <input type="text" name="ha_tenido_padecimiento_ulitmos_tres_meses_cual_2" placeholder="2" class="input-rallado">
+                            <input type="text" name="ha_tenido_padecimiento_ulitmos_tres_meses_cual_3" placeholder="3" class="input-rallado">
+                            <input type="text" name="ha_tenido_padecimiento_ulitmos_tres_meses_cual_4" placeholder="4" class="input-rallado">
+                            <input type="text" name="ha_tenido_padecimiento_ulitmos_tres_meses_cual_5" placeholder="5" class="input-rallado">
+                            <input type="text" name="ha_tenido_padecimiento_ulitmos_tres_meses_cual_6" placeholder="6" class="input-rallado">                            
+                        </div>
+                    </div>
+                </div>
+                <!-- termina p43-->
+                <div class="tres-grid-25-resto-25">
+                    <div class="form-sombreado-full-npr">
+                        <h4 class="h3-negritas-nsnp">44. ¿CONSIGUIÓ TODOS LOS MEDICAMENTOS?</h4>
+                        <div class="un-grid">
+                            <label><input type="radio" name="consiguio_los_medicamentos" value="si_todos">Sí, todos</label>
+                            <label><input type="radio" name="consiguio_los_medicamentos" value="no_ninguno">No, ninguno</label>
+                            <label><input type="radio" name="consiguio_los_medicamentos" value="solo_algunos">Solo algunos</label>  
+                        </div>
+                    </div>
+                    <div class="form-sombreado-full-npr">
+                        <h4 class="h3-negritas-nsnp">45. ¿DÓNDE CONSIGUIÓ LOS MEDICAMENTOS?</h4>
+                        <div class="tres-grid">
+                            <label><input type="radio" name="donde_consiguio_los_medicamentos" value="imss">IMSS</label>
+                            <label><input type="radio" name="donde_consiguio_los_medicamentos" value="issste">ISSSTE</label>
+                            <label><input type="radio" name="donde_consiguio_los_medicamentos" value="imss_bienestar">IMSS bienestar</label>  
+                        </div>
+                        <div class="un-grid">
+                            <div>
+                                <label><input type="radio" name="donde_consiguio_los_medicamentos" value="otra_institucion_publica">Otra institución pública</label>
+                                <input type="text" class="input-rallado-n" name="donde_consiguio_los_medicamentos_otra_institucion_publica_cual">
+                            </div>
+                            <label><input type="radio" name="donde_consiguio_los_medicamentos" value="farmacia_comercial">Farmacia comercial</label>
+                        </div>
+                    </div>
+                    <div class="form-sombreado-full">
+                        <h4 class="h3-negritas-nsnp">46. ¿PAGÓ POR LOS MEDICAMENTOS QUE LE RECETARON?</h4>
+                        <div class="form-full-mt-12">
+                            <div class="dos-grid">
+                                <div class="alineado-centro">
+                                    <label><input type="radio" name="pago_por_los_medicamentos" value="no">No</label>
+                                </div>
+                                <div class="alineado-centro">
+                                    <label><input type="radio" name="pago_por_los_medicamentos" value="si">Sí</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--termina p44 - p46 -->
+                <div class="form-sombreado">
+                    <div class="dos-grid-30-resto">
+                        <h4 class="h3-negritas-nsnp">47. ¿CUÁNTO PAGÓ POR SUS MEDICINAS RECETADAS AL MES?</h4>
+                        <div class="cinco-grid">
+                            <label><input type="radio" name="cuanto_pago_por_los_medicamentos_al_mes" value="0-500">Hasta $500</label>
+                            <label><input type="radio" name="cuanto_pago_por_los_medicamentos_al_mes" value="500-1000">$500 - $1,000</label>
+                            <label><input type="radio" name="cuanto_pago_por_los_medicamentos_al_mes" value="1000-2000">$1,000 - $2,000</label>
+                            <label><input type="radio" name="cuanto_pago_por_los_medicamentos_al_mes" value="2000-3000">$2,000 - $3,000</label>
+                            <label><input type="radio" name="cuanto_pago_por_los_medicamentos_al_mes" value="3000-4000">$3,000 - $4,000</label>
+
+                            <label><input type="radio" name="cuanto_pago_por_los_medicamentos_al_mes" value="4000-5000">$4,000 - $5,000</label>
+                            <label><input type="radio" name="cuanto_pago_por_los_medicamentos_al_mes" value="5000-7500">$5,000 - $7,500</label>  
+                            <label><input type="radio" name="cuanto_pago_por_los_medicamentos_al_mes" value="7500-10000">$7,500 - $10,000</label>  
+                            <label><input type="radio" name="cuanto_pago_por_los_medicamentos_al_mes" value="+10000">Más de $10,000</label>    
+                        </div>
+                    </div>
+                </div>
+                <!--termina p47-->
+                <div class="form-sombreado">
+                    <div class="dos-grid-30-resto">
+                        <h4 class="h3-negritas-nsnp">48. ¿CADA CUÁNTO TIENE QUE SURTIR SU RECETAS?</h4>
+                        <div class="cinco-grid">
+                            <label><input type="radio" name="cada_cuanto_surte_receta" value="una_semana">1 semana</label>
+                            <label><input type="radio" name="cada_cuanto_surte_receta" value="dos_semanas">2 semanas</label>
+                            <label><input type="radio" name="cada_cuanto_surte_receta" value="tres_semanas"> 3 semanas</label>
+                            <label><input type="radio" name="cada_cuanto_surte_receta" value="cuatro_semanas">4 semanas(1 mes)</label>
+                            <div>
+                                <input type="radio" name="cada_cuanto_surte_receta" value="otra">
+                                <input type="text" name="cada_cuanto_surte_receta_otro" class="input-otro" placeholder="Otra">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--termina salud div-->
+        </div>
+
+        <div class="form-step" id="step-5" style="display: none;">
+            <h2>Sección 5</h2> 
+            <p>Aquí vendría la siguiente parte del formulario.</p>
+        </div>
+
+        <div class="form-step" id="step-6" style="display: none;">
+            <h2>Sección 6</h2> 
+            <p>Aquí vendría la siguiente parte del formulario.</p>
+        </div>
+
+        <div class="form-step" id="step-7" style="display: none;">
+            <h2>Sección 7</h2> 
+            <p>Aquí vendría la siguiente parte del formulario.</p>
+        </div>
+        <button id="prevBtn" type="button" class="btn-anterior" onclick="prevStep()" disabled>Anterior</button>
+        <button id="nextBtn" type="button" class="btn-siguiente" onclick="nextStep()">Siguiente</button>
+        <button id="submitBtn" type="submit" style="display: none;">Enviar</button>
+
+    </div>
+
+
+    
+          <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div>
+                        <div class="footer-brand">
+                            <img src="img/icono sin letras.png" alt="InclúYes Logo">
+                        </div>
+                        <p class="footer-description">
+                            Eliminando barreras de comunicación en la atención médica con inteligencia artificial.
+                        </p>
+                    </div>
+    
+                    <div>
+                        <h3 class="footer-title">Modos de Uso</h3>
+                        <ul class="footer-links">
+                            <li><a href="#domiciliaria">Atención Domiciliaria</a></li>
+                            <li><a href="#consultorio">Consultorio / Hospital</a></li>
+                            <li><a href="#telemedicina">Telemedicina</a></li>
+                          
+                        </ul>
+                    </div>
+    
+                    <div>
+                        <h3 class="footer-title">Tecnologías</h3>
+                        <ul class="footer-links">
+                            <li><a href="#lsm">Lengua de Señas Mexicana</a></li>
+                            <li><a href="#indigenas">Lenguas Nativas</a></li>
+                            <li><a href="#ia">Inteligencia Artificial</a></li>
+                            <li><a href="#accesibilidad">Accesibilidad</a></li>
+                        </ul>
+                    </div>
+    
+                    <div>
+                        <h3 class="footer-title">Contacto</h3>
+                        <div class="footer-contact">
+                            <p>📞 +52 9931922504</p>
+                            <p>✉️ incluyes2025@gmail.com</p>
+                            <p>📍 Villahermosa, Tabasco</p>
+                         
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="footer-bottom">
+                    <p>&copy; 2024 InclúYes. Todos los derechos reservados. | Comprometidos con la inclusión y accesibilidad.</p>
+                </div>
+            </div>
+        </footer>
+</body>
+ <script src="js/accessibility-functions.js"></script>
+<script src="js/registro.js"></script>
+<script src="js/script.js"></script>
+
+
+
+</html>

@@ -1,0 +1,371 @@
+<nav class="navbar">
+    <div class="logo">
+        <img src="img/icono sin letras.png" alt="InclúYes Logo">
+    </div>
+    
+    <!-- Mobile menu button -->
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menú móvil">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    
+    <div class="nav-links" id="navLinks">
+       <a href="/index2.html">Inicio</a>
+        <a href="/registro.html">Registro</a>
+        
+        <!-- Services Dropdown -->
+        <div class="dropdown">
+            <a href="#servicios" class="dropdown-toggle" onclick="toggleDropdown(event)">
+                Servicios
+                <span class="dropdown-arrow">▼</span>
+            </a>
+            <div class="dropdown-menu">
+                <a href="interprete.html" class="dropdown-item">
+                    <span class="dropdown-icon">🤟</span>
+                    <div class="dropdown-content">
+                        <span class="dropdown-title">Intérprete LSM</span>
+                        <span class="dropdown-description">Lenguaje de Señas Mexicano</span>
+                    </div>
+                </a>
+                <a href="traductor.html" class="dropdown-item">
+                    <span class="dropdown-icon">🌐</span>
+                    <div class="dropdown-content">
+                        <span class="dropdown-title">Traductor multilingüe</span>
+                        <span class="dropdown-description">Múltiples idiomas disponibles</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <a href="historial.html">Historial Clínicos</a>
+        <a href="/citas.html">Citas</a>
+        
+        <!-- Perfil del médico simple -->
+        <div class="doctor-profile-simple">
+            <button class="doctor-profile-btn" onclick="confirmLogout()">
+                <img src="/img/Jatziri.jpg" alt="Dr. Jatziri Aguilar" class="doctor-avatar">
+                <div class="doctor-info">
+                    <span class="doctor-name">Dr. Jatziri Aguilar</span>
+                    <span class="doctor-status">🟢 En línea</span>
+                </div>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<style>
+/* Estilos para el perfil simple del médico */
+.doctor-profile-simple {
+    margin-left: 20px;
+    position: relative;
+}
+
+.doctor-profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    color: inherit;
+    text-decoration: none;
+}
+
+.doctor-profile-btn:hover {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.1) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(16, 185, 129, 0.2);
+}
+
+.doctor-profile-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(16, 185, 129, 0.15);
+}
+
+.doctor-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #10b981;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+    transition: all 0.3s ease;
+}
+
+.doctor-profile-btn:hover .doctor-avatar {
+    transform: scale(1.05);
+    border-color: #059669;
+}
+
+.doctor-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.doctor-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    line-height: 1.2;
+}
+
+.doctor-status {
+    font-size: 11px;
+    color: #10b981;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Modal de confirmación */
+.logout-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    backdrop-filter: blur(5px);
+}
+
+.logout-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 12px;
+}
+
+.modal-message {
+    font-size: 16px;
+    color: #64748b;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.modal-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+}
+
+.btn-cancel {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.btn-cancel:hover {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+.btn-confirm {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+}
+
+.btn-confirm:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .doctor-profile-simple {
+        margin-left: 0;
+        width: 100%;
+        order: 1;
+    }
+    
+    .doctor-profile-btn {
+        width: 100%;
+        justify-content: space-between;
+        padding: 12px 16px;
+    }
+    
+    .modal-content {
+        margin: 20px;
+        padding: 24px;
+    }
+    
+    .modal-buttons {
+        flex-direction: column;
+    }
+    
+    .modal-btn {
+        width: 100%;
+    }
+}
+
+
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+
+<!-- Modal de confirmación de cierre de sesión -->
+<div class="logout-modal" id="logoutModal">
+    <div class="modal-content">
+        <div class="modal-icon">👨‍⚕️</div>
+        <h3 class="modal-title">Cerrar Sesión</h3>
+        <p class="modal-message">
+            ¿Estás seguro de que deseas cerrar sesión, Dr. Jatziri Aguilar?
+        </p>
+        <div class="modal-buttons">
+            <button class="modal-btn btn-cancel" onclick="cancelLogout()">
+                Cancelar
+            </button>
+            <button class="modal-btn btn-confirm" onclick="confirmLogoutAction()">
+                Cerrar Sesión
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+// Función para mostrar el modal de confirmación
+function confirmLogout() {
+    const modal = document.getElementById('logoutModal');
+    modal.classList.add('show');
+    
+    // Prevenir scroll del body
+    document.body.style.overflow = 'hidden';
+}
+
+// Función para cancelar el cierre de sesión
+function cancelLogout() {
+    const modal = document.getElementById('logoutModal');
+    modal.classList.remove('show');
+    
+    // Restaurar scroll del body
+    document.body.style.overflow = 'auto';
+}
+
+// Función para confirmar el cierre de sesión
+function confirmLogoutAction() {
+    // Mostrar mensaje de despedida (opcional)
+    const modal = document.querySelector('.modal-content');
+    modal.innerHTML = `
+        <div class="modal-icon">👋</div>
+        <h3 class="modal-title">¡Hasta pronto!</h3>
+        <p class="modal-message">Cerrando sesión...</p>
+    `;
+    
+    // Redirigir después de un breve delay
+    setTimeout(() => {
+        window.location.href = '/index.html';
+    }, 1500);
+}
+
+// Cerrar modal al hacer clic fuera
+document.addEventListener('click', function(event) {
+    const modal = document.getElementById('logoutModal');
+    if (event.target === modal) {
+        cancelLogout();
+    }
+});
+
+// Cerrar modal con tecla Escape
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const modal = document.getElementById('logoutModal');
+        if (modal.classList.contains('show')) {
+            cancelLogout();
+        }
+    }
+});
+
+
+// Función para el menú móvil
+function toggleMobileMenu() {
+    const navLinks = document.getElementById('navLinks');
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    
+    if (navLinks) {
+        navLinks.classList.toggle('active');
+    }
+    
+    if (mobileBtn) {
+        mobileBtn.classList.toggle('active');
+    }
+}
+
+
+
+// Inicialización
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('InclúYes - Perfil médico simple cargado');
+});
+</script>

@@ -1,0 +1,742 @@
+/* Estilos profesionales con estilo hospitalario para la página Conócenos */
+
+/* Active navigation link */
+.nav-links a.active {
+    color: #0066cc;
+    font-weight: 600;
+    position: relative;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0066cc, #004499);
+    border-radius: 2px;
+}
+
+/* Hero Section Profesional */
+.about-hero {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+    padding: 120px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="medical-pattern" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M20 5 L20 35 M5 20 L35 20" stroke="%230066cc" stroke-width="0.5" opacity="0.1" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23medical-pattern)"/></svg>');
+    z-index: 1;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 24px;
+    line-height: 1.2;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+}
+
+.hero-title .highlight {
+    color: #0066cc;
+    position: relative;
+}
+
+.hero-title .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0066cc, #0052a3);
+    border-radius: 2px;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    color: #475569;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 400;
+}
+
+/* Mission Section Profesional */
+.mission-section {
+    padding: 100px 0;
+    background: #ffffff;
+    position: relative;
+}
+
+.mission-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0066cc, #00b4d8, #0066cc);
+}
+
+.mission-content {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 60px 50px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 102, 204, 0.08);
+    border: 2px solid #e2e8f0;
+    position: relative;
+}
+
+.mission-content::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #0066cc, #00b4d8);
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+.mission-icon {
+    font-size: 4rem;
+    margin-bottom: 32px;
+    color: #0066cc;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 24px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    letter-spacing: -0.01em;
+}
+
+.mission-text {
+    font-size: 1.125rem;
+    color: #475569;
+    line-height: 1.8;
+    margin-top: 24px;
+    font-weight: 400;
+}
+
+/* Vision Section Profesional */
+.vision-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    position: relative;
+}
+
+.vision-content {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 60px 50px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 102, 204, 0.08);
+    border: 2px solid #e2e8f0;
+    position: relative;
+}
+
+.vision-content::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #00b4d8, #0066cc);
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+.vision-icon {
+    font-size: 4rem;
+    margin-bottom: 32px;
+    color: #00b4d8;
+}
+
+.vision-text {
+    font-size: 1.125rem;
+    color: #475569;
+    line-height: 1.8;
+    margin-top: 24px;
+    font-weight: 400;
+}
+
+/* Values Section Profesional */
+.values-section {
+    padding: 120px 0;
+    background: #ffffff;
+    position: relative;
+}
+
+.values-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.values-header .section-title {
+    color: #1e293b;
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+.values-header .section-subtitle {
+    color: #64748b;
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.value-card {
+    background: #ffffff;
+    padding: 40px 32px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 102, 204, 0.08);
+    transition: all 0.3s ease;
+    border: 2px solid #f1f5f9;
+    position: relative;
+    overflow: hidden;
+}
+
+.value-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0066cc, #00b4d8);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.value-card:hover::before {
+    transform: scaleX(1);
+}
+
+.value-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 102, 204, 0.15);
+    border-color: #cbd5e1;
+}
+
+.value-icon {
+    font-size: 3rem;
+    margin-bottom: 24px;
+    color: #0066cc;
+    transition: transform 0.3s ease;
+}
+
+.value-card:hover .value-icon {
+    transform: scale(1.1);
+}
+
+.value-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 16px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.value-description {
+    color: #475569;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Team Section Profesional - Actualizado para 6 miembros */
+.team-section {
+    padding: 120px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    position: relative;
+}
+
+.team-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.team-header .section-title {
+    font-size: 3rem;
+    color: #1e293b;
+    margin-bottom: 16px;
+}
+
+.team-header .section-subtitle {
+    color: #64748b;
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-member {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid #f1f5f9;
+    box-shadow: 0 10px 25px rgba(0, 102, 204, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-member::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0066cc, #00b4d8);
+}
+
+/* Estilo especial para el asesor */
+.team-member.advisor {
+    border-color: #0066cc;
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.team-member.advisor::before {
+    background: linear-gradient(90deg, #0066cc, #004499);
+    height: 6px;
+}
+
+.team-member.advisor .member-role {
+    color: #0066cc;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.team-member.advisor .member-name {
+    color: #0066cc;
+}
+
+/* Estilo para estudiantes */
+.team-member.student .member-role {
+    color: #00b4d8;
+    font-weight: 500;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0, 102, 204, 0.15);
+    border-color: #cbd5e1;
+}
+
+.member-photo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #e2e8f0;
+    background: #f8fafc;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover .member-photo {
+    transform: scale(1.05);
+    border-color: #0066cc;
+}
+
+.member-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.member-photo::before {
+  
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.team-member.advisor .member-photo::before {
+
+    font-size: 2.5rem;
+}
+
+.member-info {
+    text-align: center;
+}
+
+.member-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 8px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.member-role {
+    color: #64748b;
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+/* Impact Section Profesional */
+.impact-section {
+    padding: 120px 0;
+    background: #ffffff;
+    position: relative;
+}
+
+.impact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0066cc, #00b4d8, #0066cc);
+}
+
+.impact-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.impact-header .section-title {
+    font-size: 3rem;
+    color: #1e293b;
+    margin-bottom: 16px;
+}
+
+.impact-header .section-subtitle {
+    color: #64748b;
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+.impact-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.impact-stat {
+    text-align: center;
+    background: #ffffff;
+    padding: 40px 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 102, 204, 0.08);
+    border: 2px solid #f1f5f9;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.impact-stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0066cc, #00b4d8);
+}
+
+.impact-stat:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 102, 204, 0.15);
+    border-color: #cbd5e1;
+}
+
+.impact-stat .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0066cc;
+    margin-bottom: 12px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    transition: transform 0.3s ease;
+}
+
+.impact-stat:hover .stat-number {
+    transform: scale(1.05);
+}
+
+.impact-stat .stat-label {
+    color: #475569;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* CTA Section Profesional */
+.cta {
+    background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+}
+
+.cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="cta-pattern" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23cta-pattern)"/></svg>');
+}
+
+.cta-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 16px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.cta-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 32px;
+    font-weight: 400;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-white {
+    background: white;
+    color: #0066cc;
+    border: 2px solid white;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.btn-white:hover {
+    background: transparent;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+.btn-outline-white {
+    border: 2px solid white;
+    color: white;
+    background: transparent;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.btn-outline-white:hover {
+    background: white;
+    color: #0066cc;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+    }
+
+    .impact-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mission-content,
+    .vision-content {
+        padding: 40px 32px;
+    }
+
+    .value-card {
+        padding: 32px 24px;
+    }
+
+    .team-member {
+        padding: 24px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .about-hero {
+        padding: 80px 0 60px;
+    }
+
+    .mission-section,
+    .vision-section,
+    .values-section,
+    .team-section,
+    .impact-section {
+        padding: 80px 0;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .impact-stats {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .mission-content,
+    .vision-content {
+        padding: 32px 24px;
+    }
+
+    .value-card {
+        padding: 24px 20px;
+    }
+
+    .team-member {
+        padding: 20px 16px;
+    }
+
+    .impact-stat {
+        padding: 32px 20px;
+    }
+
+    .cta-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* Animaciones suaves y profesionales */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.value-card,
+.team-member,
+.impact-stat {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.value-card:nth-child(2) { animation-delay: 0.1s; }
+.value-card:nth-child(3) { animation-delay: 0.2s; }
+.value-card:nth-child(4) { animation-delay: 0.3s; }
+.value-card:nth-child(5) { animation-delay: 0.4s; }
+.value-card:nth-child(6) { animation-delay: 0.5s; }
+
+.team-member:nth-child(1) { animation-delay: 0.1s; }
+.team-member:nth-child(2) { animation-delay: 0.2s; }
+.team-member:nth-child(3) { animation-delay: 0.3s; }
+.team-member:nth-child(4) { animation-delay: 0.4s; }
+.team-member:nth-child(5) { animation-delay: 0.5s; }
+.team-member:nth-child(6) { animation-delay: 0.6s; }
+
+/* Estados de focus para accesibilidad */
+.btn-white:focus,
+.btn-outline-white:focus {
+    outline: 3px solid rgba(0, 102, 204, 0.3);
+    outline-offset: 2px;
+}
+
+/* Mejoras tipográficas profesionales */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+p, span, div {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+}
