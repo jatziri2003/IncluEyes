@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InclúYes</title>
+    <link rel="stylesheet" href="css/styles.css">
+   
+
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo">
+        <img src="img/icono sin letras.png" alt="InclúYes Logo">
+    </div>
+    
+    <!-- Mobile menu button -->
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menú móvil">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    
+    <div class="nav-links" id="navLinks">
+        <a href="/index.html">Inicio</a>
+        <a href="/conocenos.html">Conócenos</a>
+        <a href="/login.html" class="btn btn-primary">Inicio de Sesión</a>
+        
+        
+    </div>
+</nav>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-text">
+                    <div>
+                        <h1 class="header-title">
+                            Salud
+                            <span class="highlight">Para Todos</span>
+                        </h1>
+                        <p class="header-description">
+                            "InclúYes es una aplicación web inclusiva que utiliza inteligencia artificial para
+                            garantizar comunicación médica accesible con personas sordas, hablantes de lenguas indígenas
+                            y adultos mayores."
+                        </p>
+                    </div>
+
+                    <div class="header-buttons">
+                        <a href="/conocenos.html" class="btn btn-primary btn-lg">Conocenos</a>
+                        <a href="/registro.html" class="btn btn-outline btn-lg">Registro</a>
+                    </div>
+
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">6M+</div>
+                            <div class="stat-label">Pacientes con discapacidad</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">7.4M+</div>
+                            <div class="stat-label">Hablan lengua nativa</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">12M+</div>
+                            <div class="stat-label">Adultos mayores</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="header-image">
+                    <img src="img/indexlogo.png" alt="imagen header">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- What is InclúYes Section -->
+    <section id="conocenos" class="about-incluyes">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">¿Qué es InclúYes?</h2>
+                <p class="section-description">
+                    InclúYes es una plataforma web que utiliza inteligencia artificial para facilitar la comunicación médico-paciente en tiempo real, eliminando barreras lingüísticas y sensoriales.
+                </p>
+                
+                <div class="features-list">
+                    <div class="feature-item">
+                        <span class="feature-icon-text">🤟</span>
+                        <span>Traducción automática de Lengua de Señas Mexicana (LSM)</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon-text">🗣️</span>
+                        <span>Interpretación de lenguas indígenas (náhuatl, maya, mixteco, zapoteco y más)</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon-text">♿</span>
+                        <span>Interfaz accesible para adultos mayores y personas con discapacidad motriz</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon-text">🏥</span>
+                        <span>Integración con programas de salud pública como "Salud Casa por Casa"</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modes Section -->
+    <section id="servicios" class="modes">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Tres Modos de Uso</h2>
+                <p class="section-subtitle">Adaptamos la tecnología a cada contexto médico</p>
+            </div>
+
+            <div class="modes-grid">
+                <!-- Atención Domiciliaria -->
+                <div class="mode-card">
+                    <div class="mode-image">
+                        <img src="img/domiciliaria.jpg" alt="Atención Domiciliaria" class="mode-img">
+                    </div>
+                    <div class="mode-icon">🏠</div>
+                    <h3 class="mode-title">Atención Domiciliaria</h3>
+                    <p class="mode-description">Para médicos que visitan pacientes en casa</p>
+                    
+                    <div class="mode-content">
+                        <div class="mode-summary">
+                            <p>Traducción en tiempo real sin necesidad de intérpretes presenciales para visitas médicas domiciliarias.</p>
+                        </div>
+                        
+                        <div class="mode-details" style="display: none;">
+                            <ul class="mode-features">
+                                <li>Traducción en tiempo real sin necesidad de intérpretes presenciales</li>
+                                <li>Registro de datos clínicos en la app para seguimiento</li>
+                                <li>Funciona sin instalación, accesible desde cualquier dispositivo móvil</li>
+                                <li>Ideal para programas como "Salud Casa por Casa"</li>
+                                <li>Funciona offline en zonas con conectividad limitada</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <button class="read-more-btn" onclick="toggleModeDetails(this)">
+                        <span class="btn-text">Leer más</span>
+                        <span class="btn-icon">▼</span>
+                    </button>
+                </div>
+
+                <!-- Consultorio / Hospital -->
+                <div class="mode-card">
+                    <div class="mode-image">
+                        <img src="img/consultorio.jpg" alt="Consultorio Hospital" class="mode-img">
+                    </div>
+                    <div class="mode-icon">🏥</div>
+                    <h3 class="mode-title">Consultorio / Hospital</h3>
+                    <p class="mode-description">Comunicación fluida en clínicas y hospitales</p>
+                    
+                    <div class="mode-content">
+                        <div class="mode-summary">
+                            <p>Reconocimiento de señas y traducción voz-texto para una comunicación efectiva en centros médicos.</p>
+                        </div>
+                        
+                        <div class="mode-details" style="display: none;">
+                            <ul class="mode-features">
+                                <li>Reconocimiento de señas mediante visión por computadora</li>
+                                <li>Traducción voz-texto para pacientes con dificultades auditivas</li>
+                                <li>Historial médico integrado para diagnósticos más precisos</li>
+                                <li>Interfaz optimizada para pantallas grandes</li>
+                                <li>Integración con sistemas hospitalarios existentes</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <button class="read-more-btn" onclick="toggleModeDetails(this)">
+                        <span class="btn-text">Leer más</span>
+                        <span class="btn-icon">▼</span>
+                    </button>
+                </div>
+
+                <!-- Telemedicina -->
+                <div class="mode-card">
+                    <div class="mode-image">
+                        <img src="img/teleconsulta.jpg" alt="Telemedicina" class="mode-img">
+                    </div>
+                    <div class="mode-icon">💻</div>
+                    <h3 class="mode-title">Telemedicina</h3>
+                    <p class="mode-description">Consultas remotas con traducción simultánea</p>
+                    
+                    <div class="mode-content">
+                        <div class="mode-summary">
+                            <p>Consultas médicas remotas con traducción simultánea, accesible desde cualquier navegador.</p>
+                        </div>
+                        
+                        <div class="mode-details" style="display: none;">
+                            <ul class="mode-features">
+                                <li>Funciona en navegadores sin descargas adicionales</li>
+                                <li>Accesible en zonas rurales con conexión limitada</li>
+                                <li>Soporte para intérpretes remotos en LSM y lenguas indígenas</li>
+                                <li>Videollamadas con traducción en tiempo real</li>
+                                <li>Grabación de consultas para seguimiento médico</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <button class="read-more-btn" onclick="toggleModeDetails(this)">
+                        <span class="btn-text">Leer más</span>
+                        <span class="btn-icon">▼</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Salud Casa por Casa Section -->
+    <section class="salud-casa-section">
+        <div class="container">
+            <div class="salud-casa-content">
+                <div class="salud-casa-header">
+                    <div class="government-badge">
+                        <span class="badge-icon">🏛️</span>
+                        <span class="badge-text">Programa Gubernamental</span>
+                    </div>
+                    <h2 class="salud-casa-title">
+                        Integración con <span class="highlight-green">"Salud Casa por Casa"</span>
+                    </h2>
+                    <p class="salud-casa-subtitle">
+                        InclúYes potencia el programa nacional de atención médica domiciliaria, 
+                        eliminando las barreras de comunicación en cada visita.
+                    </p>
+                </div>
+
+                <div class="salud-casa-grid">
+                    <div class="salud-casa-info">
+                        <div class="info-card">
+                            <div class="info-icon">📋</div>
+                            <h3 class="info-title">¿Qué es Salud Casa por Casa?</h3>
+                            <p class="info-description">
+                                Programa del gobierno mexicano que tiene como objetivo mejorar las condiciones de acceso a los servicios de salud de las y los adultos mayores, así como de las personas con discapacidad.
+                            </p>
+                        </div>
+
+                        <div class="integration-benefits">
+                            <h3 class="benefits-title">Beneficios de la Integración</h3>
+                            <div class="benefits-list">
+                                <div class="benefit-item">
+                                    <div class="benefit-icon">🌍</div>
+                                    <div class="benefit-content">
+                                        <h4>Alcance Universal</h4>
+                                        <p>Comunicación efectiva en adultos mayores y perdonas con discapacidad</p>
+                                    </div>
+                                </div>
+                                <div class="benefit-item">
+                                    <div class="benefit-icon">⚡</div>
+                                    <div class="benefit-content">
+                                        <h4>Eficiencia Mejorada</h4>
+                                        <p>Reducción del tiempo de consulta y mejor comprensión diagnóstica</p>
+                                    </div>
+                                </div>
+                                <div class="benefit-item">
+                                    <div class="benefit-icon">📊</div>
+                                    <div class="benefit-content">
+                                        <h4>Datos Precisos</h4>
+                                        <p>Registro digital automático de consultas y seguimiento de pacientes</p>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="salud-casa-visual">
+                        <div class="process-flow">
+                            <h3 class="flow-title">Proceso de Atención Integrada</h3>
+                            <div class="flow-steps">
+                                <div class="flow-step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h4>Llegada al Hogar</h4>
+                                        <p>El médico accede a InclúYes desde su dispositivo móvil</p>
+                                    </div>
+                                </div>
+                                <div class="flow-arrow">↓</div>
+                                <div class="flow-step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h4>Comunicación Inclusiva</h4>
+                                        <p>Traducción automática de LSM y lenguas indígenas en tiempo real</p>
+                                    </div>
+                                </div>
+                                <div class="flow-arrow">↓</div>
+                                <div class="flow-step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h4>Registro Digital</h4>
+                                        <p>Datos clínicos se registran automáticamente en el sistema</p>
+                                    </div>
+                                </div>
+                                <div class="flow-arrow">↓</div>
+                                <div class="flow-step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <h4>Seguimiento</h4>
+                                        <p>Historial disponible para futuras visitas y referencias</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="salud-casa-cta">
+                    <div class="cta-content">
+                        <h3 class="cta-title">¿Cuáles son los criterios y requisitos para recibir el programa Salud Casa por Casa?</h3>
+                        <p class="cta-description">
+                           Ser derechohabiente de la Pensión para el Bienestar de Personas Adultas Mayores o de la Pensión para el Bienestar de Personas con Discapacidad.
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section id="tecnologias" class="technologies">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Tecnologías Clave</h2>
+                <p class="section-subtitle">Inteligencia artificial especializada en comunicación médica</p>
+            </div>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-icon">🤖</div>
+                    <h3 class="tech-title">Intérprete de Lengua de Señas en Tiempo Real</h3>
+                    <ul class="tech-features">
+                        <li>IA especializada en LSM detecta y convierte señas a texto/voz</li>
+                        <li>Optimizado para entornos médicos (iluminación baja, movimientos precisos)</li>
+                        <li>Aprendizaje continuo para mejorar precisión con Big Data</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card">
+                    <div class="tech-icon">🌍</div>
+                    <h3 class="tech-title">Traductor de Lenguas Nativas</h3>
+                    <ul class="tech-features">
+                        <li>Traducción voz-texto y texto-voz en lenguas como náhuatl, maya, mixteco y más</li>
+                        <li>Base de datos en crecimiento con dialectos regionales</li>
+                        <li>Modo emergencia para términos médicos clave</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">¿Por qué elegir InclúYes?</h2>
+                <p class="section-subtitle">Ventajas que nos hacen únicos en el mercado</p>
+            </div>
+
+            <div class="benefits-grid">
+               
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌐</div>
+                    <h3 class="benefit-title">100% web</h3>
+                    <p class="benefit-description">Accesible desde cualquier navegador</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚖️</div>
+                    <h3 class="benefit-title">Alineado con leyes</h3>
+                    <p class="benefit-description">Cumple con LGPID</p>
+                         <p class="benefit-description">ODS 3 - Salud y Bienestar </p>
+                         <p class="benefit-description">ODS 10 - Reduccion de las desigualdades</p>
+                         
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">👥</div>
+                    <h3 class="benefit-title">Diseño intuitivo</h3>
+                    <p class="benefit-description">Para adultos mayores y personas con poca experiencia tecnológica</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="cta-title">¿Listo para eliminar las barreras de comunicación?</h2>
+            <p class="cta-subtitle">Únete a la revolución de la comunicación médica inclusiva</p>
+            <a href="" class="btn btn-white btn-lg">Comenzar Ahora</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-brand">
+                        <img src="img/icono sin letras.png" alt="InclúYes Logo">
+                    </div>
+                    <p class="footer-description">
+                        Eliminando barreras de comunicación en la atención médica con inteligencia artificial.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="footer-title">Modos de Uso</h3>
+                    <ul class="footer-links">
+                        <li><a href="#domiciliaria">Atención Domiciliaria</a></li>
+                        <li><a href="#consultorio">Consultorio / Hospital</a></li>
+                        <li><a href="#telemedicina">Telemedicina</a></li>
+                      
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-title">Tecnologías</h3>
+                    <ul class="footer-links">
+                        <li><a href="#lsm">Lengua de Señas Mexicana</a></li>
+                        <li><a href="#indigenas">Lenguas Nativas</a></li>
+                        <li><a href="#ia">Inteligencia Artificial</a></li>
+                        <li><a href="#accesibilidad">Accesibilidad</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-title">Contacto</h3>
+                    <div class="footer-contact">
+                        <p>📞 +52 9931922504</p>
+                        <p>✉️ incluyes2025@gmail.com</p>
+                        <p>📍 Villahermosa, Tabasco</p>
+                     
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 InclúYes. Todos los derechos reservados. | Comprometidos con la inclusión y accesibilidad.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+    <script src="js/accessibility-functions.js"></script>
+
+    
+    
+</body>
+</html>

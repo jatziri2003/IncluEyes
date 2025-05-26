@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor de Lenguas Nativas - InclúYes</title>
+    <link rel="stylesheet" href="css/traductor-styles.css">
+   <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+ <div id="navbar-container"></div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+         <h1 class="page-title">Traductor de lenguas nativas</h1>
+        <!-- Translation Interface -->
+        <div class="translation-interface">
+            <!-- Patient Panel -->
+            <div class="translation-panel patient-panel">
+                <div class="panel-header">
+                    <h2>Paciente</h2>
+                    <div class="language-selector">
+                        <select id="patientLanguage" class="language-select">
+                            <option value="nahuatl">Náhuatl</option>
+                            <option value="maya">Maya</option>
+                            <option value="mixteco">Mixteco</option>
+                            <option value="zapoteco">Zapoteco</option>
+                            <option value="yokoon">Yoko'on</option>
+                            <option value="otomi">Otomí</option>
+                            <option value="totonaco">Totonaco</option>
+                            <option value="huichol">Huichol</option>
+                            <option value="tarahumara">Tarahumara</option>
+                            <option value="purepecha">Purépecha</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="tab-navigation">
+                    <button class="tab-btn active" data-tab="traductor" data-panel="patient">
+                        <span class="tab-icon">🔤</span>
+                        <span>Traductor</span>
+                    </button>
+                    <button class="tab-btn" data-tab="lectura" data-panel="patient">
+                        <span class="tab-icon">🔊</span>
+                        <span>Lectura</span>
+                    </button>
+                    <button class="tab-btn" data-tab="microfono" data-panel="patient">
+                        <span class="tab-icon">🎤</span>
+                        <span>Micrófono</span>
+                    </button>
+                </div>
+
+                <!-- Content Area -->
+                <div class="content-area">
+                    <div class="tab-content active" id="patient-traductor">
+                        <div class="conversation-area" id="patientConversation">
+                            <div class="conversation-placeholder">
+                                <p>Las conversaciones aparecerán aquí...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="patient-lectura">
+                        <div class="reading-controls">
+                            <h3>Síntesis de Voz</h3>
+                            <div class="voice-settings">
+                                <div class="setting-group">
+                                    <label>Velocidad: <span id="patientRateValue">1.0</span></label>
+                                    <input type="range" id="patientSpeechRate" min="0.5" max="2" step="0.1" value="1">
+                                </div>
+                                <div class="setting-group">
+                                    <label>Volumen: <span id="patientVolumeValue">0.8</span></label>
+                                    <input type="range" id="patientSpeechVolume" min="0" max="1" step="0.1" value="0.8">
+                                </div>
+                                <div class="setting-group">
+                                    <label>
+                                        <input type="checkbox" id="patientAutoSpeak" checked>
+                                        Reproducir automáticamente
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="voice-test-btn" id="patientTestVoice">🔊 Probar Voz</button>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="patient-microfono">
+                        <div class="microphone-controls">
+                            <h3>Control de Micrófono</h3>
+                            <div class="audio-level-container">
+                                <label>Nivel de Audio:</label>
+                                <div class="audio-level">
+                                    <div class="level-bar" id="patientAudioLevel"></div>
+                                </div>
+                            </div>
+                            <div class="recording-status" id="patientRecordingStatus">
+                                <span class="status-text">Micrófono inactivo</span>
+                            </div>
+                            <button class="record-btn" id="patientRecordBtn">
+                                <div class="mic-icon">🎤</div>
+                                <div class="btn-label">Grabar</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="input-area">
+                    <textarea 
+                        id="patientInput" 
+                        class="message-input" 
+                        placeholder="Escriba en lengua nativa..."
+                        rows="3"
+                    ></textarea>
+                    <button class="mic-btn" id="patientMicBtn" title="Dictar/Grabar">
+                        <span class="mic-icon">🎤</span>
+                        <span class="mic-text">Dictar</span>
+                    </button>
+                    <button class="send-btn" id="patientSendBtn">
+                        <span class="send-icon">✏️</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Doctor Panel -->
+            <div class="translation-panel doctor-panel">
+                <div class="panel-header">
+                    <h2>Médico</h2>
+                    <div class="language-selector">
+                        <select id="doctorLanguage" class="language-select">
+                            <option value="spanish" selected>Español</option>
+                            <option value="english">English</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="tab-navigation">
+                    <button class="tab-btn active" data-tab="traductor" data-panel="doctor">
+                        <span class="tab-icon">🔤</span>
+                        <span>Traductor</span>
+                    </button>
+                    <button class="tab-btn" data-tab="lectura" data-panel="doctor">
+                        <span class="tab-icon">🔊</span>
+                        <span>Lectura</span>
+                    </button>
+                    <button class="tab-btn" data-tab="microfono" data-panel="doctor">
+                        <span class="tab-icon">🎤</span>
+                        <span>Micrófono</span>
+                    </button>
+                </div>
+
+                <!-- Content Area -->
+                <div class="content-area">
+                    <div class="tab-content active" id="doctor-traductor">
+                        <div class="conversation-area" id="doctorConversation">
+                            <div class="conversation-placeholder">
+                                <p>Las conversaciones aparecerán aquí...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="doctor-lectura">
+                        <div class="reading-controls">
+                            <h3>Síntesis de Voz</h3>
+                            <div class="voice-settings">
+                                <div class="setting-group">
+                                    <label>Velocidad: <span id="doctorRateValue">1.0</span></label>
+                                    <input type="range" id="doctorSpeechRate" min="0.5" max="2" step="0.1" value="1">
+                                </div>
+                                <div class="setting-group">
+                                    <label>Volumen: <span id="doctorVolumeValue">0.8</span></label>
+                                    <input type="range" id="doctorSpeechVolume" min="0" max="1" step="0.1" value="0.8">
+                                </div>
+                                <div class="setting-group">
+                                    <label>
+                                        <input type="checkbox" id="doctorAutoSpeak" checked>
+                                        Reproducir automáticamente
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="voice-test-btn" id="doctorTestVoice">🔊 Probar Voz</button>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="doctor-microfono">
+                        <div class="microphone-controls">
+                            <h3>Control de Micrófono</h3>
+                            <div class="audio-level-container">
+                                <label>Nivel de Audio:</label>
+                                <div class="audio-level">
+                                    <div class="level-bar" id="doctorAudioLevel"></div>
+                                </div>
+                            </div>
+                            <div class="recording-status" id="doctorRecordingStatus">
+                                <span class="status-text">Micrófono inactivo</span>
+                            </div>
+                            <button class="record-btn" id="doctorRecordBtn">
+                                <div class="mic-icon">🎤</div>
+                                <div class="btn-label">Grabar</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="input-area">
+                    <textarea 
+                        id="doctorInput" 
+                        class="message-input" 
+                        placeholder="Escriba en español..."
+                        rows="3"
+                    ></textarea>
+                    <button class="mic-btn" id="doctorMicBtn" title="Dictar/Grabar">
+                        <span class="mic-icon">🎤</span>
+                        <span class="mic-text">Dictar</span>
+                    </button>
+                    <button class="send-btn" id="doctorSendBtn">
+                        <span class="send-icon">✏️</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medical Vocabulary -->
+        <div class="medical-vocabulary">
+            <h3>Vocabulario Médico Común</h3>
+            <div class="vocabulary-sections">
+                <div class="vocab-section">
+                    <h4>Saludos y Cortesía</h4>
+                    <div class="vocab-buttons">
+                        <button class="vocab-btn" data-phrase="Buenos días" data-target="patient">Buenos días</button>
+                        <button class="vocab-btn" data-phrase="Buenas tardes" data-target="patient">Buenas tardes</button>
+                        <button class="vocab-btn" data-phrase="Gracias" data-target="patient">Gracias</button>
+                        <button class="vocab-btn" data-phrase="Por favor" data-target="patient">Por favor</button>
+                        <button class="vocab-btn" data-phrase="De nada" data-target="doctor">De nada</button>
+                        <button class="vocab-btn" data-phrase="Con permiso" data-target="patient">Con permiso</button>
+                    </div>
+                </div>
+                
+                <div class="vocab-section">
+                    <h4>Síntomas y Dolores</h4>
+                    <div class="vocab-buttons">
+                        <button class="vocab-btn" data-phrase="Me duele" data-target="patient">Me duele</button>
+                        <button class="vocab-btn" data-phrase="Dolor de cabeza" data-target="patient">Dolor de cabeza</button>
+                        <button class="vocab-btn" data-phrase="Dolor de estómago" data-target="patient">Dolor de estómago</button>
+                        <button class="vocab-btn" data-phrase="Tengo fiebre" data-target="patient">Tengo fiebre</button>
+                        <button class="vocab-btn" data-phrase="Me siento mal" data-target="patient">Me siento mal</button>
+                        <button class="vocab-btn" data-phrase="Tengo náuseas" data-target="patient">Tengo náuseas</button>
+                        <button class="vocab-btn" data-phrase="No puedo dormir" data-target="patient">No puedo dormir</button>
+                        <button class="vocab-btn" data-phrase="Me duele el pecho" data-target="patient">Me duele el pecho</button>
+                    </div>
+                </div>
+                
+                <div class="vocab-section">
+                    <h4>Preguntas del Médico</h4>
+                    <div class="vocab-buttons">
+                        <button class="vocab-btn" data-phrase="¿Cómo se siente?" data-target="doctor">¿Cómo se siente?</button>
+                        <button class="vocab-btn" data-phrase="¿Dónde le duele?" data-target="doctor">¿Dónde le duele?</button>
+                        <button class="vocab-btn" data-phrase="¿Desde cuándo?" data-target="doctor">¿Desde cuándo?</button>
+                        <button class="vocab-btn" data-phrase="¿Toma medicamentos?" data-target="doctor">¿Toma medicamentos?</button>
+                        <button class="vocab-btn" data-phrase="Abra la boca" data-target="doctor">Abra la boca</button>
+                        <button class="vocab-btn" data-phrase="Respire profundo" data-target="doctor">Respire profundo</button>
+                        <button class="vocab-btn" data-phrase="¿Tiene alergias?" data-target="doctor">¿Tiene alergias?</button>
+                        <button class="vocab-btn" data-phrase="Muéstreme dónde" data-target="doctor">Muéstreme dónde</button>
+                    </div>
+                </div>
+                
+                <div class="vocab-section">
+                    <h4>Instrucciones Médicas</h4>
+                    <div class="vocab-buttons">
+                        <button class="vocab-btn" data-phrase="Tome este medicamento" data-target="doctor">Tome este medicamento</button>
+                        <button class="vocab-btn" data-phrase="Una pastilla cada 8 horas" data-target="doctor">Una pastilla cada 8 horas</button>
+                        <button class="vocab-btn" data-phrase="Regrese en una semana" data-target="doctor">Regrese en una semana</button>
+                        <button class="vocab-btn" data-phrase="Descanse mucho" data-target="doctor">Descanse mucho</button>
+                        <button class="vocab-btn" data-phrase="Tome mucha agua" data-target="doctor">Tome mucha agua</button>
+                        <button class="vocab-btn" data-phrase="No se preocupe" data-target="doctor">No se preocupe</button>
+                        <button class="vocab-btn" data-phrase="Es normal" data-target="doctor">Es normal</button>
+                        <button class="vocab-btn" data-phrase="Necesita análisis" data-target="doctor">Necesita análisis</button>
+                    </div>
+                </div>
+                
+                <div class="vocab-section">
+                    <h4>Respuestas Comunes</h4>
+                    <div class="vocab-buttons">
+                        <button class="vocab-btn" data-phrase="Sí" data-target="patient">Sí</button>
+                        <button class="vocab-btn" data-phrase="No" data-target="patient">No</button>
+                        <button class="vocab-btn" data-phrase="No entiendo" data-target="patient">No entiendo</button>
+                        <button class="vocab-btn" data-phrase="¿Puede repetir?" data-target="patient">¿Puede repetir?</button>
+                        <button class="vocab-btn" data-phrase="Necesito ayuda" data-target="patient">Necesito ayuda</button>
+                        <button class="vocab-btn" data-phrase="Está bien" data-target="patient">Está bien</button>
+                        <button class="vocab-btn" data-phrase="No sé" data-target="patient">No sé</button>
+                        <button class="vocab-btn" data-phrase="Tengo miedo" data-target="patient">Tengo miedo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Traduciendo...</div>
+    </div>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Audio Elements -->
+    <audio id="notificationSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
+    </audio>
+
+
+
+
+    <script src="js/traductor.js"></script>
+    <script src="/js/script.js"></script>
+    <link rel="stylesheet" href="css/style_form.css">
+
+      <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-brand">
+                        <img src="img/icono sin letras.png" alt="InclúYes Logo">
+                    </div>
+                    <p class="footer-description">
+                        Eliminando barreras de comunicación en la atención médica con inteligencia artificial.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="footer-title">Modos de Uso</h3>
+                    <ul class="footer-links">
+                        <li><a href="#domiciliaria">Atención Domiciliaria</a></li>
+                        <li><a href="#consultorio">Consultorio / Hospital</a></li>
+                        <li><a href="#telemedicina">Telemedicina</a></li>
+                      
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-title">Tecnologías</h3>
+                    <ul class="footer-links">
+                        <li><a href="#lsm">Lengua de Señas Mexicana</a></li>
+                        <li><a href="#indigenas">Lenguas Nativas</a></li>
+                        <li><a href="#ia">Inteligencia Artificial</a></li>
+                        <li><a href="#accesibilidad">Accesibilidad</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-title">Contacto</h3>
+                    <div class="footer-contact">
+                        <p>📞 +52 9931922504</p>
+                        <p>✉️ incluyes2025@gmail.com</p>
+                        <p>📍 Villahermosa, Tabasco</p>
+                     
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 InclúYes. Todos los derechos reservados. | Comprometidos con la inclusión y accesibilidad.</p>
+            </div>
+        </div>
+    </footer>
+ <script src="js/accessibility-functions.js"></script>
+
+
+</body>
+ 
+</html>

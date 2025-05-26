@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intérprete LSM - Cámara</title>
+    <link rel="stylesheet" href="css/interprete-style.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- jQuery para compatibilidad -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+ <div id="navbar-container"></div>
+    <!-- Main Container -->
+    <div class="main-container">
+     
+
+        <h1 class="page-title">Intérprete de LSM</h1>
+
+        <div class="interpreter-layout">
+            <!-- Left Panel - Camera Section -->
+            <div class="camera-panel">
+                <div class="camera-container" id="cameraContainer">
+                    <!-- Video Element -->
+                    <video id="cameraVideo" class="camera-video" autoplay muted playsinline></video>
+                    
+                    <!-- Camera Placeholder -->
+                    <div class="camera-placeholder" id="cameraPlaceholder">
+                        <div class="patient-label">Paciente X</div>
+                        <div class="patient-icon">
+                            <div class="user-silhouette"></div>
+                        </div>
+                        <p class="instruction-text">Presione "Activar Cámara" para comenzar</p>
+                    </div>
+
+                    <!-- Hand Detection Overlay -->
+                    <div class="hand-detection" id="handDetection">
+                        <div class="detection-box">
+                            <div class="detection-label">Mano detectada</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Camera Status -->
+                <div class="camera-status">
+                    <span class="status-indicator"></span>
+                    <span class="status-text">Cámara inactiva</span>
+                    <div class="camera-info">
+                        <span class="resolution">Resolución: 640x480</span>
+                        <span class="fps">FPS: 30</span>
+                    </div>
+                </div>
+
+                <!-- Camera Controls -->
+                <div class="camera-controls">
+                    <button class="control-btn primary" id="cameraBtn">
+                        <span class="btn-icon">📹</span>
+                        <span class="btn-text">Activar Cámara</span>
+                    </button>
+                    
+                    <button class="control-btn secondary" id="recordBtn">
+                        <span class="btn-icon">⏺️</span>
+                        <span class="btn-text">Iniciar Grabación</span>
+                    </button>
+                    
+                    <button class="control-btn secondary" id="settingsBtn">
+                        <span class="btn-icon">⚙️</span>
+                        <span class="btn-text">Configuración</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Panel - Chat and Controls -->
+            <div class="chat-panel">
+                <!-- Tab Navigation -->
+                <div class="tab-navigation">
+                    <button class="tab-btn active" data-tab="transcripcion">
+                        <span class="tab-icon">📝</span>
+                        <span>Transcripción</span>
+                    </button>
+                    <button class="tab-btn" data-tab="lectura">
+                        <span class="tab-icon">🔊</span>
+                        <span>Lectura</span>
+                    </button>
+                    <button class="tab-btn" data-tab="microfono">
+                        <span class="tab-icon">🎤</span>
+                        <span>Micrófono</span>
+                    </button>
+                </div>
+
+                <!-- Chat Content -->
+                <div class="chat-content">
+                    <div class="tab-content active" id="transcripcion">
+                        <div class="chat-messages" id="chatMessages">
+                            <!-- Los mensajes aparecerán aquí dinámicamente -->
+                        </div>
+                        
+                        <!-- Recording Controls -->
+                        <div class="recording-controls">
+                            <div class="recording-buttons">
+                                <button class="record-btn patient-btn" id="patientRecordBtn">
+                                    <div class="mic-icon">🎤</div>
+                                    <div class="btn-label">paciente</div>
+                                </button>
+                                
+                                <button class="record-btn doctor-btn" id="doctorRecordBtn">
+                                    <div class="mic-icon">🎤</div>
+                                    <div class="btn-label">medico</div>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="current-translation">
+                            <div class="translation-label">Estado:</div>
+                            <div class="translation-text" id="translationText">Esperando entrada...</div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="lectura">
+                        <div class="reading-controls">
+                            <h3>Síntesis de Voz</h3>
+                            <div class="voice-settings">
+                                <div class="setting-group">
+                                    <label>Velocidad:</label>
+                                    <input type="range" id="speechRate" min="0.5" max="2" step="0.1" value="1">
+                                    <span class="value-display">1.0</span>
+                                </div>
+                                <div class="setting-group">
+                                    <label>Volumen:</label>
+                                    <input type="range" id="speechVolume" min="0" max="1" step="0.1" value="0.8">
+                                    <span class="value-display">0.8</span>
+                                </div>
+                            </div>
+                            <button class="voice-test-btn" id="testVoice">🔊 Probar Voz</button>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="microfono">
+                        <div class="microphone-controls">
+                            <h3>Control de Micrófono</h3>
+                            <div class="audio-level-container">
+                                <label>Nivel de Audio:</label>
+                                <div class="audio-level">
+                                    <div class="level-bar" id="audioLevel"></div>
+                                </div>
+                            </div>
+                            <button class="mic-toggle-btn" id="micToggle">
+                                <span class="mic-icon">🎤</span>
+                                <span class="mic-status">Activar Micrófono</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Iniciando cámara...</div>
+    </div>
+
+    <script src="jS/interprete.js"></script>
+      <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-brand">
+                        <img src="img/icono sin letras.png" alt="InclúYes Logo">
+                    </div>
+                    <p class="footer-description">
+                        Eliminando barreras de comunicación en la atención médica con inteligencia artificial.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="footer-title">Modos de Uso</h3>
+                    <ul class="footer-links">
+                        <li><a href="#domiciliaria">Atención Domiciliaria</a></li>
+                        <li><a href="#consultorio">Consultorio / Hospital</a></li>
+                        <li><a href="#telemedicina">Telemedicina</a></li>
+                      
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-title">Tecnologías</h3>
+                    <ul class="footer-links">
+                        <li><a href="#lsm">Lengua de Señas Mexicana</a></li>
+                        <li><a href="#indigenas">Lenguas Nativas</a></li>
+                        <li><a href="#ia">Inteligencia Artificial</a></li>
+                        <li><a href="#accesibilidad">Accesibilidad</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-title">Contacto</h3>
+                    <div class="footer-contact">
+                        <p>📞 +52 9931922504</p>
+                        <p>✉️ incluyes2025@gmail.com</p>
+                        <p>📍 Villahermosa, Tabasco</p>
+                     
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 InclúYes. Todos los derechos reservados. | Comprometidos con la inclusión y accesibilidad.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+  <script src="js/accessibility-functions.js"></script>
+   <script src="/js/script.js"></script>
+</html>
